@@ -1,0 +1,10 @@
+// шрифт на раскладке полос
+@font-face {
+    font-family: 'Ristretto Slab Pro';
+    src: local('../fonts/Ristretto Slab Pro Bold'), local('Ristretto-Slab-Pro-Bold'),
+        url('../fonts/RistrettoSlabPro-Bold.woff2') format('woff2'),
+        url('../fonts/RistrettoSlabPro-Bold.woff') format('woff'),
+        url('../fonts/RistrettoSlabPro-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+  }
