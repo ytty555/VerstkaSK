@@ -8,7 +8,7 @@ class GridOfPages {
 
         function getCoordinatesNumberPage(page) {
             let row, col;
-            // Функция возвращает объект с ключами: номер страницы, столбец и строка. Координаты начинаются с 1
+            // Функция возвращает объект с ключами-координатами: столбец и строка. Координаты начинаются с 1
             if (page % 2) {
                 col = 2;
                 row = (page + 1) / 2;
@@ -21,20 +21,46 @@ class GridOfPages {
                 }
             }
             return {
-                pageNumber: page,
                 row: row,
                 col: col
             };
         }
 
-        function createPageHTML(pageObj) {
+        function createPagesHTML() {
+            // Вычисляем количество строк в таблице Pages
+                const allRows = numPages / 4;
 
+            // Создаем <div data-row="??" class="row justify-content-around"> 
+            // по количеству строк allRows
+            let divViewBlockContainer = document.querySelector('.view-block')
+            for (let i = 1; i <= allRows; i++) {
+                let divRow = document.createElement('div');
+                divRow.className = "row justify-content-around";
+                divRow.dataset.row = i;
+                divViewBlockContainer.appendChild(divRow);
+            }
+
+            // Для каждой строки содаем две колонки с отображением Pages
+            let rows = document.querySelectorAll('[data-row]');
+            for (let i = 0; i < rows.length; i++) {
+                let div_Col_I = document.createElement('div');
+                div_Col_I.className = "col-xs-4 col-I";
+                div_Col_I.setAttribute('part-row', `1-${i+1}`);
+                rows[i].appendChild(div_Col_I);
+                
+                let div_Col_II = document.createElement('div');
+                div_Col_II.className = "col-xs-4 col-II";
+                div_Col_II.setAttribute('part-row', `2-${i+1}`);
+                rows[i].appendChild(div_Col_II);
+
+            }
+
+            
         }
-        
-        for (let i = 1; i <= this.pages; i++) {
-            1111111111111111111111111111111111111111111111111111111111111111111111111
-        }
+
+        createPagesHTML();
     }
 }
 
 let grid = new GridOfPages(24);
+grid.init();
