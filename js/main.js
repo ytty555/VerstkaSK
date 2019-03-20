@@ -27,7 +27,7 @@ class GridOfPages {
             };
         }
 
-        function createPageIcon(pageObj) {
+        function createPageHTML(pageObj) {
 
         }
         
