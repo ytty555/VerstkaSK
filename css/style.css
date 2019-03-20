@@ -13,6 +13,10 @@
   width: 129px;
 }
 
+.page-container__left, .page-container__right {
+  display: inline-block;
+}
+
 .page-container__left .verstka {
   position: relative;
   top: 14px;
@@ -63,7 +67,7 @@
 }
 
 .page-number {
-  top: -5px;
+  top: -12px;
   left: 12px;
   position: absolute;
   font-family: 'Ristretto Slab Pro';
