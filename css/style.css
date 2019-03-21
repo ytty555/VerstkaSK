@@ -4,4 +4,113 @@
   font-weight: 700;
   font-style: normal;
 }
+
+.b-page {
+  display: inline-block;
+  height: 56px;
+  width: 159px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.b-page-header {
+  height: 46px;
+  width: 129px;
+  background-image: url("../../img/page-body-0.svg");
+}
+
+.b-page-header__foto {
+  position: relative;
+  height: 24px;
+  width: 30px;
+  background-image: url("../../img/f-0.svg");
+}
+
+.b-page-header__verstka {
+  position: relative;
+  height: 22px;
+  width: 22px;
+  background-image: url("../../img/v-0.svg");
+}
+
+.b-page-header__number-fon {
+  position: relative;
+  height: 36px;
+  width: 50px;
+  background-image: url("../../img/page-fon-0.svg");
+}
+
+.b-page-header__number {
+  position: relative;
+  font-family: 'Ristretto Slab Pro';
+  top: -12px;
+  left: 11px;
+  font-size: 41px;
+  color: #fff;
+}
+
+.b-page-footer {
+  height: 9px;
+  width: 129px;
+  margin-top: 2px;
+  background-image: url("../../img/cmyk-0.svg");
+}
+
+.b-page_orientation_left .b-page-header__foto {
+  top: 16px;
+  left: 7px;
+}
+
+.b-page_orientation_left .b-page-header__verstka {
+  top: -7px;
+  left: 43px;
+}
+
+.b-page_orientation_left .b-page-header__number-fon {
+  top: -39px;
+  left: 72px;
+}
+
+.b-page_orientation_right .b-page-header__foto {
+  top: 16px;
+  left: 92px;
+}
+
+.b-page_orientation_right .b-page-header__verstka {
+  top: -7px;
+  left: 64px;
+}
+
+.b-page_orientation_right .b-page-header__number-fon {
+  top: -39px;
+  left: 6px;
+}
+
+.b-page_color .b-page-footer {
+  background-image: url("../../img/cmyk-1.svg");
+}
+
+.b-page_verstka-done .b-page-header__verstka {
+  background-image: url("../../img/v-1.svg");
+}
+
+.b-page_verstka-done .b-page-header__number-fon {
+  background-image: url("../../img/page-fon-1.svg");
+}
+
+.b-page_foto-done .b-page-header__verstka {
+  background-image: url("../../img/v-1.svg");
+}
+
+.b-page_foto-done .b-page-header__number-fon {
+  background-image: url("../../img/page-fon-1.svg");
+}
+
+.b-page_foto-done .b-page-header {
+  background-image: url("../../img/page-body-1.svg");
+}
+
+.b-page_foto-done .b-page-header__foto {
+  background-image: url("../../img/f-1.svg");
+}
 /*# sourceMappingURL=style.css.map */
