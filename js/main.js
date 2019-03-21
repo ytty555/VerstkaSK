@@ -32,7 +32,7 @@ class GridOfPages {
 
             // Создаем <div data-row="??" class="row justify-content-around"> 
             // по количеству строк allRows
-            let divViewBlockContainer = document.querySelector('.view-block')
+            let divViewBlockContainer = document.querySelector('.b-view')
             for (let i = 1; i <= allRows; i++) {
                 let divRow = document.createElement('div');
                 divRow.className = "row justify-content-around";
@@ -44,12 +44,12 @@ class GridOfPages {
             let rows = document.querySelectorAll('[data-row]');
             for (let i = 0; i < rows.length; i++) {
                 let div_Col_I = document.createElement('div');
-                div_Col_I.className = "col-xs-4 col-I";
+                div_Col_I.className = "b-part b-part_partition_1 col-xs-4";
                 div_Col_I.setAttribute('part-row', `1-${i+1}`);
                 rows[i].appendChild(div_Col_I);
                 
                 let div_Col_II = document.createElement('div');
-                div_Col_II.className = "col-xs-4 col-II";
+                div_Col_II.className = "b-part b-part_partition_2 col-xs-4";
                 div_Col_II.setAttribute('part-row', `2-${i+1}`);
                 rows[i].appendChild(div_Col_II);
 
