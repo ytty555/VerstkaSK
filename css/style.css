@@ -57,12 +57,12 @@
 }
 
 .b-page_orientation_left .b-page-header__foto {
-  top: 16px;
+  top: -4px;
   left: 7px;
 }
 
 .b-page_orientation_left .b-page-header__verstka {
-  top: -7px;
+  top: 19px;
   left: 43px;
 }
 
@@ -72,12 +72,12 @@
 }
 
 .b-page_orientation_right .b-page-header__foto {
-  top: 16px;
+  top: -4px;
   left: 92px;
 }
 
 .b-page_orientation_right .b-page-header__verstka {
-  top: -7px;
+  top: 19px;
   left: 64px;
 }
 

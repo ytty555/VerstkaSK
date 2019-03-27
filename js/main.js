@@ -26,41 +26,130 @@ class GridOfPages {
             };
         }
 
-        function createPagesHTML() {
-            // Вычисляем количество строк в таблице Pages
-                const allRows = numPages / 4;
+        // Модуль функций для создания элементов DataView
+        function createElementsDataView() {
+            let createRow = function(rowNumber) {
+                let div = document.createElement('div');
+                div.className = 'row';
+                div.dataset.rowNumber = rowNumber;
+                return div;
+            };
+            
+            let createPagePair = function() {
+                let div = document.createElement('div');
+                div.className = 'b-page-pair col-xs-4';
+                return div;
+            };
 
-            // Создаем <div data-row="??" class="row justify-content-around"> 
-            // по количеству строк allRows
-            let divViewBlockContainer = document.querySelector('.b-view')
-            for (let i = 1; i <= allRows; i++) {
-                let divRow = document.createElement('div');
-                divRow.className = "row justify-content-around";
-                divRow.dataset.row = i;
-                divViewBlockContainer.appendChild(divRow);
-            }
+            let createPage = function(isColor, orientation, isVerstkaDone = false, isFotoDone = false) {
+                let classNameStr = 'b-page';
+                let div = document.createElement('div');
 
-            // Для каждой строки содаем две колонки с отображением Pages
-            let rows = document.querySelectorAll('[data-row]');
-            for (let i = 0; i < rows.length; i++) {
-                let div_Col_I = document.createElement('div');
-                div_Col_I.className = "b-part b-part_partition_1 col-xs-4";
-                div_Col_I.setAttribute('part-row', `1-${i+1}`);
-                rows[i].appendChild(div_Col_I);
-                
-                let div_Col_II = document.createElement('div');
-                div_Col_II.className = "b-part b-part_partition_2 col-xs-4";
-                div_Col_II.setAttribute('part-row', `2-${i+1}`);
-                rows[i].appendChild(div_Col_II);
+                // Добавляем соответствующие классы в строку классов, в зависимости от параметров функции   
+                classNameStr += isColor ? ' b-page_color' : '';
+                classNameStr += (orientation === 'left') ? ' b-page_orientation_left' : (orientation === 'right') ? ' b-page_orientation_right' : ''; 
+                classNameStr += isVerstkaDone ? ' b-page_verstka-done' : '';
+                classNameStr += isFotoDone ? ' b-page_foto-done' : '';
 
-            }
+                div.className = classNameStr;
+                return div;
+            };
 
+            let createHeader = function() {
+                let div = document.createElement('div');
+                div.className = 'b-page-header';
+                return div;
+            };
+            
+            let createFooter = function() {
+                let div = document.createElement('div');
+                div.className = 'b-page-footer';
+                return div;
+            };
+            
+            let createHeaderFoto = function() {
+                let div = document.createElement('div');
+                div.className = 'b-page-header__foto';
+                return div;
+            };
+            
+            let createHeaderVerstka = function() {
+                let div = document.createElement('div');
+                div.className = 'b-page-header__verstka';
+                return div;
+            };
+            
+            let createHeaderNumberFon = function() {
+                let div = document.createElement('div');
+                div.className = 'b-page-header__number-fon';
+                return div;
+            };
+            
+            let createHeaderNumberNum = function(num) {
+                let div = document.createElement('div');
+                div.className = 'b-page-header__number';
+                div.innerHTML = num;
+                return div;
+            };
+
+            return {
+                createRow,
+                createPagePair,
+                createPage,
+                createHeader,
+                createFooter,
+                createHeaderFoto,
+                createHeaderVerstka,
+                createHeaderNumberFon,
+                createHeaderNumberNum,
+            };
             
         }
 
-        createPagesHTML();
+        function drawPagesSheet() {
+            const containerDataView = document.querySelector('section.b-data-view');
+            let el = createElementsDataView();
+            for (let i = 1; i <= numPages; i++) {
+                let currentRow = containerDataView.appendChild(el.createRow(i));
+                let currentPagePair = currentRow.appendChild(el.createPagePair());
+                
+                // Левая Page
+                let currentPageLeft = currentPagePair.appendChild(el.createPage(true, 'left'));
+                {
+                    let curentPageHeader = currentPageLeft.appendChild(el.createHeader());
+                    {
+                        curentPageHeader.appendChild(el.createHeaderVerstka());
+                        curentPageHeader.appendChild(el.createHeaderFoto());
+                        let currentNumFon = curentPageHeader.appendChild(el.createHeaderNumberFon());
+                        {
+                            currentNumFon.appendChild(el.createHeaderNumberNum(88));
+                        }
+                    }
+                    currentPageLeft.appendChild(el.createFooter());
+                } // конец левой Page
+                
+                // Правая Page
+                let currentPageRight = currentPagePair.appendChild(el.createPage(false, 'right'));
+                {
+                    let curentPageHeader = currentPageRight.appendChild(el.createHeader());
+                    {
+                        curentPageHeader.appendChild(el.createHeaderVerstka());
+                        curentPageHeader.appendChild(el.createHeaderFoto());
+                        let currentNumFon = curentPageHeader.appendChild(el.createHeaderNumberFon());
+                        {
+                            currentNumFon.appendChild(el.createHeaderNumberNum(88));
+                        }
+                    }
+                    currentPageRight.appendChild(el.createFooter());
+                } // конец правой Page
+
+            } // конец цикла for
+
+        }
+
+        drawPagesSheet();    
     }
 }
 
-let grid = new GridOfPages(24);
+let grid = new GridOfPages(12);
 grid.init();
