@@ -5,12 +5,20 @@
   font-style: normal;
 }
 
+.row {
+  height: 65px;
+}
+
 .b-page {
   display: inline-block;
   height: 56px;
   width: 159px;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.b-page-pair {
+  margin-right: 100px;
 }
 
 .b-page-header {
