@@ -125,7 +125,7 @@ class GridOfPages {
         }
 
         function getPagesNumbersInRow(numPages, row) {
-            let pagesNumbersInRow = [['02','03'], ['12','13']];
+            let pagesNumbersInRow = [[], []];
             let pageLpartL, pageRpartL; 
             let pageLpartR, pageRpartR;
 
@@ -135,16 +135,21 @@ class GridOfPages {
             // Левая часть строки -----------------------------------------
             // Левая полоса разворота в левой части строки
             pageLpartL = (2 * row - 2) === 0 ? numPages : (2 * row - 2);
+            pagesNumbersInRow[0][0] = twoDigitsString(pageLpartL);
             // Правая полоса разворота в левой части строки
             pageRpartL = 2 * row - 1;
+            pagesNumbersInRow[0][1] = twoDigitsString(pageRpartL);
             // ------------------------------------------------------------
 
             // Правая часть строки -----------------------------------------
             // Левая полоса разворота в правой части строки
             pageLpartR = (2 * row - 2) + (numPages / 2);
+            pagesNumbersInRow[1][0] = twoDigitsString(pageLpartR);
             // Правая полоса разворота в правой части строки
             pageRpartR = (2 * row - 1) + (numPages / 2);
+            pagesNumbersInRow[1][1] = twoDigitsString(pageRpartR);
             // ------------------------------------------------------------
+            
 
             return pagesNumbersInRow;
         }
