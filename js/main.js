@@ -1,30 +1,15 @@
 class GridOfPages {
     constructor(pages) {
         this.pages = pages;
+        this.pairs = this.pages / 2; // Пары полос: правая полоса (нечетная) и левая полоса (четная)
+        this.pagesInOnePart = this.pairs / 2; // Количество полос в правой или левой части отображения
     }
 
     init() {
         let numPages = this.pages;
+        let numPairs = this.pairs;
+        let numPagesInOnePart = this.pagesInOnePart;
 
-        // function getCoordinatesNumberPage(page) {
-        //     let row, col;
-        //     // Функция возвращает объект с ключами-координатами: столбец и строка. Координаты начинаются с 1
-        //     if (page % 2) {
-        //         col = 2;
-        //         row = (page + 1) / 2;
-        //     } else {
-        //         col = 1;
-        //         if (page == numPages) {
-        //             row = 1;
-        //         } else {
-        //             row = (page + 2) / 2;
-        //         }
-        //     }
-        //     return {
-        //         row: row,
-        //         col: col
-        //     };
-        // }
 
         // Модуль функций для создания элементов DataView
         function createElementsDataView() {
@@ -105,52 +90,70 @@ class GridOfPages {
             };
 
         }
-        
-        function drawRow(container, rowNumber) {
+
+        function drawRow(container, rowNumber, pagesNumbersInRow) {
             const elL = createElementsDataView();
             const elR = createElementsDataView();
-            
+
             let currentRow = container.appendChild(elL.createRow(rowNumber));
             // -------------------------Левая половина всех полос -------------------------
-            drawPagePair(elL, currentRow);
-            
+            drawPagePair(elL, currentRow, pagesNumbersInRow[0]);
+
             // -------------------------Правая половина всех полос -------------------------
-            drawPagePair(elR, currentRow);
+            drawPagePair(elR, currentRow, pagesNumbersInRow[1]);
         }
-        
-        function drawPagePair(elementObj, currentRow) {
+
+        function drawPagePair(elementObj, currentRow, pagesNumbers) {
             let currentPagePair = currentRow.appendChild(elementObj.createPagePair());
+            // Левая полоса (четная) в развороте
+            drawPage(elementObj, currentPagePair, pagesNumbers[0], false, 'left', false, false);
+            // Правая полоса (не четная) в развороте
+            drawPage(elementObj, currentPagePair, pagesNumbers[1], false, 'right', false, false);
+        }
 
-            // Левая Page
-            let currentPageLeft = currentPagePair.appendChild(elementObj.createPage(true, 'left')); {
-                let curentPageHeader = currentPageLeft.appendChild(elementObj.createHeader()); {
-                    curentPageHeader.appendChild(elementObj.createHeaderVerstka());
-                    curentPageHeader.appendChild(elementObj.createHeaderFoto());
-                    let currentNumFon = curentPageHeader.appendChild(elementObj.createHeaderNumberFon()); {
-                        currentNumFon.appendChild(elementObj.createHeaderNumberNum(88));
-                    }
-                }
-                currentPageLeft.appendChild(elementObj.createFooter());
-            } // конец левой Page
+        function drawPage(elementObj, currentPagePair, numberPage, color, orientation, verstkaDone, fotoDone) {
+            let currentPageLeft = currentPagePair.appendChild(elementObj.createPage(color, orientation, verstkaDone, fotoDone));
 
-            // Правая Page
-            let currentPageRight = currentPagePair.appendChild(elementObj.createPage(false, 'right')); {
-                let curentPageHeader = currentPageRight.appendChild(elementObj.createHeader()); {
-                    curentPageHeader.appendChild(elementObj.createHeaderVerstka());
-                    curentPageHeader.appendChild(elementObj.createHeaderFoto());
-                    let currentNumFon = curentPageHeader.appendChild(elementObj.createHeaderNumberFon()); {
-                        currentNumFon.appendChild(elementObj.createHeaderNumberNum(88));
-                    }
+            let curentPageHeader = currentPageLeft.appendChild(elementObj.createHeader()); {
+                curentPageHeader.appendChild(elementObj.createHeaderVerstka());
+                curentPageHeader.appendChild(elementObj.createHeaderFoto());
+                let currentNumFon = curentPageHeader.appendChild(elementObj.createHeaderNumberFon()); {
+                    currentNumFon.appendChild(elementObj.createHeaderNumberNum(numberPage));
                 }
-                currentPageRight.appendChild(elementObj.createFooter());
-            } // конец правой Page
+            }
+            currentPageLeft.appendChild(elementObj.createFooter());
+        }
+
+        function getPagesNumbersInRow(numPages, row) {
+            let pagesNumbersInRow = [['02','03'], ['12','13']];
+            let pageLpartL, pageRpartL; 
+            let pageLpartR, pageRpartR;
+
+            function twoDigitsString(num) {
+                return num < 10 ? '0' + num : '' + num;  
+            }
+            // Левая часть строки -----------------------------------------
+            // Левая полоса разворота в левой части строки
+            pageLpartL = (2 * row - 2) === 0 ? numPages : (2 * row - 2);
+            // Правая полоса разворота в левой части строки
+            pageRpartL = 2 * row - 1;
+            // ------------------------------------------------------------
+
+            // Правая часть строки -----------------------------------------
+            // Левая полоса разворота в правой части строки
+            pageLpartR = (2 * row - 2) + (numPages / 2);
+            // Правая полоса разворота в правой части строки
+            pageRpartR = (2 * row - 1) + (numPages / 2);
+            // ------------------------------------------------------------
+
+            return pagesNumbersInRow;
         }
 
         function drawPagesSheet() {
             const containerDataView = document.querySelector('section.b-data-view');
-
-            for (let i = 1; i <= numPages; i++) {
-                drawRow(containerDataView, i);
+            for (let i = 1; i <= numPagesInOnePart; i++) {
+                let pagesNumbersInRow = getPagesNumbersInRow(numPages, i);
+                drawRow(containerDataView, i, pagesNumbersInRow);
 
             } // конец цикла for
 
@@ -161,5 +164,5 @@ class GridOfPages {
 }
 
 
-let grid = new GridOfPages(6);
+let grid = new GridOfPages(24);
 grid.init();
