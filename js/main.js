@@ -3,12 +3,20 @@ class GridOfPages {
         this.pages = pages;
         this.pairs = this.pages / 2; // Пары полос: правая полоса (нечетная) и левая полоса (четная)
         this.pagesInOnePart = this.pairs / 2; // Количество полос в правой или левой части отображения
+
+        // Цветовые раскладки
+        this.colorScheme = {
+            scheme24: [1, 2, 3, 4, 9, 10, 11, 12, 13, 14, 15, 16, 21, 22, 23, 24],
+            scheme28: [1, 2, 3, 4, 11, 12, 13, 14, 15, 16, 17, 18, 25, 26, 27, 28],
+            scheme32: [1, 2, 3, 4, 13, 14, 15, 16, 17, 18, 19, 20, 29, 30, 31, 32],
+        };
     }
 
     init() {
         let numPages = this.pages;
-        let numPairs = this.pairs;
         let numPagesInOnePart = this.pagesInOnePart;
+        const colorScheme = this.colorScheme;
+        const currentColorScheme = ((numPages === 24) ? colorScheme.scheme24 : (numPages === 28) ? colorScheme.scheme28 : (numPages === 32) ? colorScheme.scheme32 : undefined);
 
 
         // Модуль функций для создания элементов DataView
@@ -105,10 +113,19 @@ class GridOfPages {
 
         function drawPagePair(elementObj, currentRow, pagesNumbers) {
             let currentPagePair = currentRow.appendChild(elementObj.createPagePair());
+            let leftPageNumber = pagesNumbers[0];
+            let rightPageNumber = pagesNumbers[1];
+
+            // Функция определения цветности полосы согласно цветовой схеме colorScheme
+            function isColorPage(currentPage) {
+                let resNum = parseInt(currentPage);
+                return (currentColorScheme.indexOf(resNum) != -1);
+            }
+
             // Левая полоса (четная) в развороте
-            drawPage(elementObj, currentPagePair, pagesNumbers[0], false, 'left', false, false);
+            drawPage(elementObj, currentPagePair, leftPageNumber, isColorPage(leftPageNumber), 'left', false, false);
             // Правая полоса (не четная) в развороте
-            drawPage(elementObj, currentPagePair, pagesNumbers[1], false, 'right', false, false);
+            drawPage(elementObj, currentPagePair, rightPageNumber, isColorPage(rightPageNumber), 'right', false, false);
         }
 
         function drawPage(elementObj, currentPagePair, numberPage, color, orientation, verstkaDone, fotoDone) {
@@ -126,11 +143,11 @@ class GridOfPages {
 
         function getPagesNumbersInRow(numPages, row) {
             let pagesNumbersInRow = [[], []];
-            let pageLpartL, pageRpartL; 
+            let pageLpartL, pageRpartL;
             let pageLpartR, pageRpartR;
 
             function twoDigitsString(num) {
-                return num < 10 ? '0' + num : '' + num;  
+                return num < 10 ? '0' + num : '' + num;
             }
             // Левая часть строки -----------------------------------------
             // Левая полоса разворота в левой части строки
@@ -149,7 +166,7 @@ class GridOfPages {
             pageRpartR = (2 * row - 1) + (numPages / 2);
             pagesNumbersInRow[1][1] = twoDigitsString(pageRpartR);
             // ------------------------------------------------------------
-            
+
 
             return pagesNumbersInRow;
         }
@@ -168,6 +185,5 @@ class GridOfPages {
     }
 }
 
-
-let grid = new GridOfPages(24);
-grid.init();
+    let grid = new GridOfPages(24);
+    grid.init();
