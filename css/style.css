@@ -5,8 +5,27 @@
   font-style: normal;
 }
 
+.b-control-panel {
+  margin-top: 5px;
+  margin-bottom: 60px;
+}
+
+.b-control-panel-pages-wrap {
+  width: 122px;
+  border: 1px solid #DCDCDC;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+}
+
+.b-control-panel__btn-pages {
+  margin-top: 5px;
+  width: 100px;
+  border-radius: 5px;
+}
+
 .row {
-  height: 80px;
+  height: 70px;
 }
 
 .b-page {

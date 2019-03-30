@@ -185,5 +185,40 @@ class GridOfPages {
     }
 }
 
-    let grid = new GridOfPages(24);
-    grid.init();
+class ControlOptions {
+    constructor() {
+
+    }
+
+    init() {
+        this.setEvents();
+    }
+
+    createPagesSheet(numPages) {
+        let grid = new GridOfPages(numPages);
+        grid.init();
+    }
+
+    getNumPages(InputRadioArr) {
+        for (let i = 0; i < InputRadioArr.length; i++) {
+            if (InputRadioArr[i].checked) {
+                return parseInt(InputRadioArr[i].value);
+            }
+        }
+    }
+
+    setEvents() {
+        const btnPagesOptions = document.querySelector('.b-control-panel__btn-pages');
+        const inputRadioPages = document.querySelectorAll('.b-control-panel__radio-pages');
+
+        btnPagesOptions.addEventListener('click', () => {
+            this.createPagesSheet(this.getNumPages(inputRadioPages));
+        });
+
+    }
+}
+
+
+let ctrlOptions = new ControlOptions();
+ctrlOptions.init();
+

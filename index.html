@@ -13,16 +13,22 @@
 </head>
 
 <body>
-    <section class="b-data-view container"></section>
+    <section class="b-control-panel container">
+        <div class="row">
+            <div class="col-md-4 b-control-pages-option">
+                <div class="b-control-panel-pages-wrap">
+                    <input class="b-control-panel__radio-pages" type="radio" name="pages" value="24"> 24 полосы<br>
+                    <input class="b-control-panel__radio-pages" type="radio" name="pages" value="28"> 28 полос<br>
+                    <input class="b-control-panel__radio-pages" type="radio" name="pages" value="32"> 32 полосы<br>
+                    <input class="b-control-panel__btn-pages b-control-panel__btn-pages_disabled" type="button" value="Ок">
+                </div>
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4"></div>
+        </div>
+    </section>
 
-    <!-- <section class="b-control-panel">
-        <form action="#">
-            <input type="radio" name="pages" value="24">24 полосы<br>
-            <input type="radio" name="pages" value="28">28 полос<br>
-            <input type="radio" name="pages" value="32">32 полосы<br>
-            <input type="submit" value="Ок">
-        </form>
-    </section> -->
+    <section class="b-data-view container"></section>
 
     <script src="js/main.js"></script>
 </body>
