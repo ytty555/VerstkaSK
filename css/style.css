@@ -24,6 +24,10 @@
   border-radius: 5px;
 }
 
+.b-info {
+  font-size: 20px;
+}
+
 .row {
   height: 70px;
 }
@@ -126,7 +130,7 @@
 }
 
 .b-page_foto-done .b-page-header__verstka {
-  background-image: url("../img/v-1.svg");
+  background-image: url("../img/v-2.svg");
 }
 
 .b-page_foto-done .b-page-header__number-fon {
@@ -134,10 +138,26 @@
 }
 
 .b-page_foto-done .b-page-header {
-  background-image: url("../img/page-body-1.svg");
+  background-image: url("../img/page-body-2.svg");
 }
 
 .b-page_foto-done .b-page-header__foto {
+  background-image: url("../img/f-2.svg");
+}
+
+.b-page_foto-done.b-page_verstka-done .b-page-header__verstka {
+  background-image: url("../img/v-1.svg");
+}
+
+.b-page_foto-done.b-page_verstka-done .b-page-header__number-fon {
+  background-image: url("../img/page-fon-1.svg");
+}
+
+.b-page_foto-done.b-page_verstka-done .b-page-header {
+  background-image: url("../img/page-body-1.svg");
+}
+
+.b-page_foto-done.b-page_verstka-done .b-page-header__foto {
   background-image: url("../img/f-1.svg");
 }
 /*# sourceMappingURL=style.css.map */
