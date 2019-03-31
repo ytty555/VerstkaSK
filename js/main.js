@@ -10,6 +10,7 @@ class GridOfPages {
             scheme28: [1, 2, 3, 4, 11, 12, 13, 14, 15, 16, 17, 18, 25, 26, 27, 28],
             scheme32: [1, 2, 3, 4, 13, 14, 15, 16, 17, 18, 19, 20, 29, 30, 31, 32],
         };
+
     }
 
     init() {
@@ -34,10 +35,11 @@ class GridOfPages {
                 return div;
             };
 
-            let createPage = function (isColor, orientation, isVerstkaDone = false, isFotoDone = false) {
+            let createPage = function (numPage, isColor, orientation, isVerstkaDone = false, isFotoDone = false) {
                 let classNameStr = 'b-page';
                 let div = document.createElement('div');
 
+                div.dataset.numpage = numPage;
                 // Добавляем соответствующие классы в строку классов, в зависимости от параметров функции   
                 classNameStr += isColor ? ' b-page_color' : '';
                 classNameStr += (orientation === 'left') ? ' b-page_orientation_left' : (orientation === 'right') ? ' b-page_orientation_right' : '';
@@ -115,6 +117,23 @@ class GridOfPages {
             let currentPagePair = currentRow.appendChild(elementObj.createPagePair());
             let leftPageNumber = pagesNumbers[0];
             let rightPageNumber = pagesNumbers[1];
+            let leftVerstka = false;
+            let rightVerstka = false;
+            let leftFoto = false;
+            let rightFoto = false;
+            let currentStatus = getStatus();
+            
+            if (currentStatus != -1) {
+                for (let i = 1; i < currentStatus.length; i++) {
+                    if (currentStatus[i].pageID == leftPageNumber) {
+                        leftVerstka = currentStatus[i].verstkaDone;
+                        leftFoto = currentStatus[i].fotoDone;
+                    } else if (currentStatus[i].pageID == rightPageNumber) {
+                        rightVerstka = currentStatus[i].verstkaDone;
+                        rightFoto = currentStatus[i].fotoDone;
+                    }
+                }
+            } 
 
             // Функция определения цветности полосы согласно цветовой схеме colorScheme
             function isColorPage(currentPage) {
@@ -123,13 +142,13 @@ class GridOfPages {
             }
 
             // Левая полоса (четная) в развороте
-            drawPage(elementObj, currentPagePair, leftPageNumber, isColorPage(leftPageNumber), 'left', false, false);
+            drawPage(elementObj, currentPagePair, leftPageNumber, isColorPage(leftPageNumber), 'left', leftVerstka, leftFoto);
             // Правая полоса (не четная) в развороте
-            drawPage(elementObj, currentPagePair, rightPageNumber, isColorPage(rightPageNumber), 'right', false, false);
+            drawPage(elementObj, currentPagePair, rightPageNumber, isColorPage(rightPageNumber), 'right', rightVerstka, rightFoto);
         }
 
         function drawPage(elementObj, currentPagePair, numberPage, color, orientation, verstkaDone, fotoDone) {
-            let currentPageLeft = currentPagePair.appendChild(elementObj.createPage(color, orientation, verstkaDone, fotoDone));
+            let currentPageLeft = currentPagePair.appendChild(elementObj.createPage(numberPage, color, orientation, verstkaDone, fotoDone));
 
             let curentPageHeader = currentPageLeft.appendChild(elementObj.createHeader()); {
                 curentPageHeader.appendChild(elementObj.createHeaderVerstka());
@@ -183,12 +202,13 @@ class GridOfPages {
 
         drawPagesSheet();
         this.setEvents();
+        this.getInfo();
     }
-
 
     setEvents() {
         const btnsVerstkaArr = document.querySelectorAll('.b-page-header__verstka');
         const btnsFotoArr = document.querySelectorAll('.b-page-header__foto');
+        
 
         for (let i = 0; i < btnsVerstkaArr.length; i++) {
             btnsVerstkaArr[i].addEventListener('click', (e) => {
@@ -196,6 +216,7 @@ class GridOfPages {
                 for (let i = 0; i < pageArr.length; i++) {
                     if (pageArr[i].contains(e.target)) {
                         pageArr[i].classList.toggle('b-page_verstka-done');
+                        this.getInfo();
                         break;
                     }
                 }
@@ -208,11 +229,47 @@ class GridOfPages {
                 for (let i = 0; i < pageArr.length; i++) {
                     if (pageArr[i].contains(e.target)) {
                         pageArr[i].classList.toggle('b-page_foto-done');
+                        this.getInfo();
                         break;
                     }
                 }
             });
         }
+    }
+
+    // Вычисляет и выводит на экран информацию о сверстанных полосах, а также записывает 
+    // текущий статус в localStorage
+    getInfo() {
+        const totalNumPages = document.querySelector('.b-info__total-num-page');
+        const readyNumPages = document.querySelector('.b-info__ready-num-page');
+        const notReadyNumPages = document.querySelector('.b-info__notready-num-page');
+        const pagesArr = document.querySelectorAll('.b-page');
+        let countReady = 0;
+        let countNotReady = 0;
+        let countAll = this.pages;
+
+        let statusPagesArr = [this.pages];
+
+        pagesArr.forEach(function (element) {
+            let pageObj = {};
+            let el = element.classList;
+            countReady += (el.contains('b-page_verstka-done') || el.contains('b-page_foto-done')) ? 1 : 0;
+
+            pageObj.pageID = element.dataset.numpage;
+            pageObj.verstkaDone = el.contains('b-page_verstka-done');
+            pageObj.fotoDone = el.contains('b-page_foto-done');
+            statusPagesArr.push(pageObj);
+
+        });
+
+        countNotReady = countAll - countReady;
+
+        totalNumPages.textContent = `Полос в номере: ${this.pages}`;
+        readyNumPages.textContent = `Сверстано полос: ${countReady}`;
+        notReadyNumPages.textContent = `Осталось сверстать: ${countNotReady}`;
+
+        // Записываем текущее состояние в localStorage
+        localStorage.setItem('status_verstka', JSON.stringify(statusPagesArr));
     }
 }
 
@@ -235,6 +292,8 @@ class ControlOptions {
     createPagesSheet(numPages) {
         const parentNode = document.querySelector('.b-data-view');
         this.deleteChildNodes(parentNode);
+        
+        localStorage.removeItem('status_verstka');
 
         let grid = new GridOfPages(numPages);
         grid.init();
@@ -260,6 +319,32 @@ class ControlOptions {
     }
 }
 
+function getStatus() {
+    // Если в localStorage есть сохраненная информация о статусе верстки
+    if (localStorage.getItem('status_verstka')) {
+        let status = localStorage.getItem('status_verstka');
+        if (status > '') {
+            status = JSON.parse(status);
+        }
+        return status;
+    } else {
+        return -1;
+    }
+}
+
+function startDefault() {
+    let status = getStatus();
+    let numPages;
+    if (status != -1) {
+        numPages = status[0];
+    } else {
+        return;
+    }
+    let grid = new GridOfPages(numPages);
+    grid.init();
+}
+
+startDefault();
 
 let ctrlOptions = new ControlOptions();
 ctrlOptions.init();
