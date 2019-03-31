@@ -9,69 +9,27 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Учет верстальщика</title>
+    <title>Учет полос</title>
 </head>
 
 <body>
-    <section class="view">
-        <div class="container view-block">
-            <!-- Разблюдовка по полосам целиком -->
-            <div data-row="??" class="row justify-content-around">
-                <!-- Первая часть полос в разблюдовке -->
-                <div class="col-xs-4 col-I">
-                    <div class="page-container__left color">
-                        <div class="page-body">
-                            <div class="verstka"></div>
-                            <div class="foto"></div>
-                            <div class="page-number-fon">
-                                <div class="page-number">02</div>
-                            </div>
-                        </div>
-                        <div class="cmyk"></div>
-                    </div>
-
-                    <div class="page-container__right foto-done verstka-done">
-                        <div class="page-body">
-                            <div class="verstka"></div>
-                            <div class="foto"></div>
-                            <div class="page-number-fon">
-                                <div class="page-number">03</div>
-                            </div>
-                        </div>
-                        <div class="cmyk"></div>
-                    </div>
-
+    <section class="b-control-panel container">
+        <div class="row">
+            <div class="col-md-4 b-control-pages-option">
+                <div class="b-control-panel-pages-wrap">
+                    <input class="b-control-panel__radio-pages" type="radio" name="pages" value="24"> 24 полосы<br>
+                    <input class="b-control-panel__radio-pages" type="radio" name="pages" value="28"> 28 полос<br>
+                    <input class="b-control-panel__radio-pages" type="radio" name="pages" value="32"> 32 полосы<br>
+                    <input class="b-control-panel__btn-pages b-control-panel__btn-pages_disabled" type="button" value="Ок">
                 </div>
-
-
-                <!-- Вторая часть полос в разблюдовке -->
-                <div class="col-xs-4 col-II">
-                    <div class="page-container__left color">
-                        <div class="page-body">
-                            <div class="verstka"></div>
-                            <div class="foto"></div>
-                            <div class="page-number-fon">
-                                <div class="page-number">04</div>
-                            </div>
-                        </div>
-                        <div class="cmyk"></div>
-                    </div>
-
-                    <div class="page-container__right verstka-done">
-                        <div class="page-body">
-                            <div class="verstka"></div>
-                            <div class="foto"></div>
-                            <div class="page-number-fon">
-                                <div class="page-number">05</div>
-                            </div>
-                        </div>
-                        <div class="cmyk"></div>
-                    </div>
-                </div>
-
             </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4"></div>
         </div>
     </section>
+
+    <section class="b-data-view container"></section>
+
     <script src="js/main.js"></script>
 </body>
 

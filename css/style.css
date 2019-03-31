@@ -5,119 +5,139 @@
   font-style: normal;
 }
 
-.view-block {
-  max-width: 800px;
+.b-control-panel {
+  margin-top: 5px;
+  margin-bottom: 60px;
 }
 
-.page-body {
-  position: relative;
-  display: block;
-  background: url("../../img/page-body-0.svg") no-repeat;
+.b-control-panel-pages-wrap {
+  width: 122px;
+  border: 1px solid #DCDCDC;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+}
+
+.b-control-panel__btn-pages {
+  margin-top: 5px;
+  width: 100px;
+  border-radius: 5px;
+}
+
+.row {
+  height: 70px;
+}
+
+.b-page {
+  display: inline-block;
+  height: 56px;
+  width: 159px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.b-page-pair {
+  margin-right: 100px;
+}
+
+.b-page-header {
   height: 46px;
   width: 129px;
+  background-image: url("../../img/page-body-0.svg");
 }
 
-.col-I, .col-II {
-  min-width: 268px;
-  display: block;
-}
-
-.page-container__left, .page-container__right {
-  display: inline-block;
-}
-
-.page-container__left {
-  margin: 10px 5px 10px 0px;
-}
-
-.page-container__right {
-  margin: 10px 0px 10px 5px;
-}
-
-.page-container__left .verstka {
+.b-page-header__foto {
   position: relative;
-  top: 14px;
-  left: 8px;
-  background: url("../../img/v-0.svg") no-repeat;
+  height: 24px;
+  width: 30px;
+  background-image: url("../../img/f-0.svg");
+}
+
+.b-page-header__verstka {
+  position: relative;
   height: 22px;
+  width: 22px;
+  background-image: url("../../img/v-0.svg");
 }
 
-.page-container__right .verstka {
+.b-page-header__number-fon {
   position: relative;
-  top: 14px;
-  left: 99px;
-  background: url("../../img/v-0.svg") no-repeat;
-  height: 22px;
-  z-index: 100;
+  height: 36px;
+  width: 50px;
+  background-image: url("../../img/page-fon-0.svg");
 }
 
-.page-container__left .foto {
+.b-page-header__number {
   position: relative;
-  bottom: 9px;
-  left: 37px;
-  background: url("../../img/f-0.svg") no-repeat;
-  height: 30px;
-}
-
-.page-container__right .foto {
-  position: relative;
-  bottom: 9px;
-  left: 62px;
-  background: url("../../img/f-0.svg") no-repeat;
-  height: 30px;
-}
-
-.page-container__left .page-number-fon {
-  position: relative;
-  bottom: 46px;
-  left: 72px;
-  background: url("../../img/page-fon-0.svg") no-repeat;
-  height: 51px;
-}
-
-.page-container__right .page-number-fon {
-  position: relative;
-  bottom: 46px;
-  left: 6px;
-  background: url("../../img/page-fon-0.svg") no-repeat;
-  height: 51px;
-}
-
-.page-number {
-  top: -12px;
-  left: 12px;
-  position: absolute;
   font-family: 'Ristretto Slab Pro';
-  font-size: 40px;
+  top: -12px;
+  left: 11px;
+  font-size: 41px;
   color: #fff;
 }
 
-.cmyk {
-  position: relative;
-  display: block;
-  width: 129px;
+.b-page-footer {
   height: 9px;
+  width: 129px;
   margin-top: 2px;
-  background: url("../../img/cmyk-0.svg") no-repeat;
+  background-image: url("../../img/cmyk-0.svg");
 }
 
-.color .cmyk {
-  background: url("../../img/cmyk-1.svg") no-repeat;
+.b-page_orientation_left .b-page-header__foto {
+  top: -4px;
+  left: 7px;
 }
 
-.foto-done .foto {
-  background: url("../../img/f-1.svg") no-repeat;
+.b-page_orientation_left .b-page-header__verstka {
+  top: 19px;
+  left: 43px;
 }
 
-.foto-done .page-body {
-  background: url("../../img/page-body-1.svg") no-repeat;
+.b-page_orientation_left .b-page-header__number-fon {
+  top: -39px;
+  left: 72px;
 }
 
-.verstka-done .verstka {
-  background: url("../../img/v-1.svg") no-repeat;
+.b-page_orientation_right .b-page-header__foto {
+  top: -4px;
+  left: 92px;
 }
 
-.verstka-done .page-number-fon {
-  background: url("../../img/page-fon-1.svg") no-repeat;
+.b-page_orientation_right .b-page-header__verstka {
+  top: 19px;
+  left: 64px;
+}
+
+.b-page_orientation_right .b-page-header__number-fon {
+  top: -39px;
+  left: 6px;
+}
+
+.b-page_color .b-page-footer {
+  background-image: url("../../img/cmyk-1.svg");
+}
+
+.b-page_verstka-done .b-page-header__verstka {
+  background-image: url("../../img/v-1.svg");
+}
+
+.b-page_verstka-done .b-page-header__number-fon {
+  background-image: url("../../img/page-fon-1.svg");
+}
+
+.b-page_foto-done .b-page-header__verstka {
+  background-image: url("../../img/v-1.svg");
+}
+
+.b-page_foto-done .b-page-header__number-fon {
+  background-image: url("../../img/page-fon-1.svg");
+}
+
+.b-page_foto-done .b-page-header {
+  background-image: url("../../img/page-body-1.svg");
+}
+
+.b-page_foto-done .b-page-header__foto {
+  background-image: url("../../img/f-1.svg");
 }
 /*# sourceMappingURL=style.css.map */
