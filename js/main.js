@@ -182,6 +182,37 @@ class GridOfPages {
         }
 
         drawPagesSheet();
+        this.setEvents();
+    }
+
+
+    setEvents() {
+        const btnsVerstkaArr = document.querySelectorAll('.b-page-header__verstka');
+        const btnsFotoArr = document.querySelectorAll('.b-page-header__foto');
+
+        for (let i = 0; i < btnsVerstkaArr.length; i++) {
+            btnsVerstkaArr[i].addEventListener('click', (e) => {
+                let pageArr = document.querySelectorAll('.b-page');
+                for (let i = 0; i < pageArr.length; i++) {
+                    if (pageArr[i].contains(e.target)) {
+                        pageArr[i].classList.toggle('b-page_verstka-done');
+                        break;
+                    }
+                }
+            });
+        }
+
+        for (let i = 0; i < btnsFotoArr.length; i++) {
+            btnsFotoArr[i].addEventListener('click', (e) => {
+                let pageArr = document.querySelectorAll('.b-page');
+                for (let i = 0; i < pageArr.length; i++) {
+                    if (pageArr[i].contains(e.target)) {
+                        pageArr[i].classList.toggle('b-page_foto-done');
+                        break;
+                    }
+                }
+            });
+        }
     }
 }
 
@@ -194,7 +225,17 @@ class ControlOptions {
         this.setEvents();
     }
 
+    // Функция удаляет все дочерние элементы parentNode
+    deleteChildNodes(parentNode) {
+        while (parentNode.firstChild) {
+            parentNode.removeChild(parentNode.firstChild);
+        }
+    }
+
     createPagesSheet(numPages) {
+        const parentNode = document.querySelector('.b-data-view');
+        this.deleteChildNodes(parentNode);
+
         let grid = new GridOfPages(numPages);
         grid.init();
     }
@@ -210,6 +251,7 @@ class ControlOptions {
     setEvents() {
         const btnPagesOptions = document.querySelector('.b-control-panel__btn-pages');
         const inputRadioPages = document.querySelectorAll('.b-control-panel__radio-pages');
+
 
         btnPagesOptions.addEventListener('click', () => {
             this.createPagesSheet(this.getNumPages(inputRadioPages));
