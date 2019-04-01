@@ -1,3 +1,8 @@
+body {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 @font-face {
   font-family: 'Ristretto Slab Pro';
   src: local("../fonts/Ristretto Slab Pro Bold"), local("Ristretto-Slab-Pro-Bold"), url("../fonts/RistrettoSlabPro-Bold.woff2") format("woff2"), url("../fonts/RistrettoSlabPro-Bold.woff") format("woff"), url("../fonts/RistrettoSlabPro-Bold.ttf") format("truetype");
@@ -37,9 +42,19 @@
 }
 
 .b-page-pair {
-  width: 160px;
+  display: block;
   height: 112px;
-  background-image: url("../../img/pair.svg");
-  border: 1px solid red;
+  width: 162px;
+  background-image: url("../img/pair.svg");
+  background-repeat: no-repeat;
+}
+
+.b-page_orientation_left .b-page__fon {
+  position: relative;
+  height: 112px;
+  background-image: url("../img/page-fon-left-0.svg");
+  background-repeat: no-repeat;
+  left: 0px;
+  top: opx;
 }
 /*# sourceMappingURL=style.css.map */

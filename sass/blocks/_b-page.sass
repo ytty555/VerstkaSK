@@ -1,100 +1,16 @@
-.row
-    height: 70px
+.b-page-pair
+    display: block
+    height: 112px
+    width: 162px
+    background-image: url('../img/pair.svg')
+    background-repeat: no-repeat
 
 .b-page
-    display: inline-block
-    height: 56px
-    width: 159px
-    margin-top: 10px
-    margin-bottom: 10px
-    &-pair
-        margin-right: 100px
-    &-header
-        height: 46px
-        width: 129px
-        background-image: url('../img/page-body-0.svg')
-        &__foto
-            position: relative
-            height: 24px
-            width: 30px
-            background-image: url('../img/f-0.svg')
-        &__verstka
-            position: relative
-            height: 22px
-            width: 22px
-            background-image: url('../img/v-0.svg')
-        &__number-fon
-            position: relative
-            height: 36px
-            width: 50px
-            background-image: url('../img/page-fon-0.svg')
-        &__number
-            position: relative
-            font-family: 'Ristretto Slab Pro'
-            top: -12px
-            left: 11px
-            font-size: 41px
-            color: #fff
-    &-footer
-        height: 9px
-        width: 129px
-        margin-top: 2px
-        background-image: url('../img/cmyk-0.svg')
-
-// Ориентация: Правая левая
-.b-page_orientation
-    &_left
-        & .b-page-header
-            &__foto
-                top: -4px
-                left: 7px
-            &__verstka
-                top: 19px
-                left: 43px
-            &__number-fon
-                top: -39px
-                left: 72px
-    &_right
-        & .b-page-header
-            &__foto
-                top: -4px
-                left: 92px
-            &__verstka
-                top: 19px
-                left: 64px
-            &__number-fon
-                top: -39px
-                left: 6px
-
-// Если полоса цветная, то меняем футер на цветной
-.b-page_color .b-page-footer
-    background-image: url('../img/cmyk-1.svg')
-
-// Если верстка полосы готова
-.b-page_verstka-done 
-    & .b-page-header__verstka
-        background-image: url('../img/v-1.svg')
-    & .b-page-header__number-fon
-        background-image: url('../img/page-fon-1.svg')
-
-// Если верстал другой верстальщик
-.b-page_foto-done 
-    & .b-page-header__verstka
-        background-image: url('../img/v-2.svg')
-    & .b-page-header__number-fon
-        background-image: url('../img/page-fon-1.svg')
-    & .b-page-header
-        background-image: url('../img/page-body-2.svg')
-    & .b-page-header__foto
-        background-image: url('../img/f-2.svg')
-
-// Если фото обработаны
-.b-page_foto-done.b-page_verstka-done
-    & .b-page-header__verstka
-        background-image: url('../img/v-1.svg')
-    & .b-page-header__number-fon
-        background-image: url('../img/page-fon-1.svg')
-    & .b-page-header
-        background-image: url('../img/page-body-1.svg')
-    & .b-page-header__foto
-        background-image: url('../img/f-1.svg')
+    &_orientation_left .b-page__fon
+        position: relative
+        height: 112px
+        background-image: url('../img/page-fon-left-0.svg')
+        background-repeat: no-repeat
+        left: 0px
+        top: opx
+  
