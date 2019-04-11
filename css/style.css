@@ -18,43 +18,29 @@ body {
   font-style: normal;
 }
 
-.b-control-panel {
-  margin-top: 5px;
-  margin-bottom: 60px;
-}
-
-.b-control-panel-pages-wrap {
-  width: 122px;
-  border: 1px solid #DCDCDC;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-bottom: 10px;
-}
-
-.b-control-panel__btn-pages {
-  margin-top: 5px;
-  width: 100px;
-  border-radius: 5px;
-}
-
-.b-info {
-  font-size: 20px;
-}
-
-.b-page-pair {
-  display: block;
-  height: 112px;
+.page-pair {
   width: 162px;
-  background-image: url("../img/pair.svg");
-  background-repeat: no-repeat;
+  height: 112px;
 }
 
-.b-page_orientation_left .b-page__fon {
-  position: relative;
-  height: 112px;
-  background-image: url("../img/page-fon-left-0.svg");
-  background-repeat: no-repeat;
-  left: 0px;
-  top: opx;
+.visually-hidden {
+  position: absolute !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  clip: rect(0 0 0 0) !important;
+  -webkit-clip-path: inset(100%) !important;
+          clip-path: inset(100%) !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  text-indent: -9999px !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
 }
 /*# sourceMappingURL=style.css.map */

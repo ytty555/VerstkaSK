@@ -6,34 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <title>Учет полос</title>
 </head>
 
 <body>
-    <section class="b-control-panel container">
-        <div class="row">
-            <div class="col-md-4 b-control-pages-option">
-                <div class="b-control-panel-pages-wrap">
-                    <input class="b-control-panel__radio-pages" type="radio" name="pages" value="24"> 24 полосы<br>
-                    <input class="b-control-panel__radio-pages" type="radio" name="pages" value="28"> 28 полос<br>
-                    <input class="b-control-panel__radio-pages" type="radio" name="pages" value="32"> 32 полосы<br>
-                    <input class="b-control-panel__btn-pages b-control-panel__btn-pages_disabled" type="button" value="Ок">
-                </div>
-            </div>
-            <div class="col-md-8 b-info">
-                <p class="b-info__total-num-page">Сформируйте раскладку номера (слева)...</p>
-                <p class="b-info__ready-num-page"></p>
-                <p class="b-info__notready-num-page"></p>
-            </div>
-        </div>
-    </section>
+    <header class="header-main"></header>
 
-    <section class="b-data-view container">
-        
-    </section>
+    <main class="main-block">
+        <section class="page-section">
+            <h1 class="visually-hidden">Раскладка полос</h1>
+            <div class="page-pair">
+                <img class="page-pair-background" width="162px" height="112px" src="img/pair.svg" alt="Изображение разворота полос">
+                <!-- Левая страница -->
+                <div class="page page_pos_left page_color page_delegated page_make-up page_photo">
+                    <div class="page__el-number"></div>
+                    <div class="page__el-color"></div>
+                    <div class="page__el-make-up"></div>
+                    <div class="page__el-photo"></div>
+                    <div class="page__el-delegated"></div>
+                    <div class="page__el-background"></div>
+                </div>
+                <!-- Конец левой страницы -->
+
+                <!-- Правая страница -->
+                <div class="page page_pos_right page_color page_delegated page_make-up page_photo">
+                    <div class="page__el-number"></div>
+                    <div class="page__el-color"></div>
+                    <div class="page__el-make-up"></div>
+                    <div class="page__el-photo"></div>
+                    <div class="page__el-delegated"></div>
+                    <div class="page__el-background"></div>
+                </div>
+                <!-- Конец правой страницы -->
+
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-main"></footer>
 
     <script src="js/main.js"></script>
 </body>
