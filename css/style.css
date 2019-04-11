@@ -23,6 +23,22 @@ body {
   height: 112px;
 }
 
+.page__el-make-up,
+.page__el-photo,
+.page__el-delegated {
+  padding: 0;
+  border: 1px solid grey;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+  display: inline-block;
+  height: 17px;
+  width: 17px;
+  text-align: center;
+  text-decoration: none;
+}
+
 .visually-hidden {
   position: absolute !important;
   visibility: hidden !important;
