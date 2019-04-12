@@ -6,15 +6,18 @@ body
     grid-gap: 10px
     height: 100vh
     margin: 0
+    background-color: $main-bg
 
 .header-main
     grid-area: header
+    border-bottom: 1px solid $grey-border
     
 
 .control-panel
     grid-area: controls
-    background-color: $pages-bg
-    border: 1px solid $pages-border
+    background-color: $grey
+    border: 1px solid $grey-border
+    border-radius: 5px
 
 .main-block
     grid-area: pages
@@ -22,9 +25,11 @@ body
     padding-right: 20px
     background-color: $pages-bg
     border: 1px solid $pages-border
+    border-radius: 5px
 
 .footer-main
     grid-area: footer
+    border-top: 1px solid $grey-border
 
 
 .visually-hidden

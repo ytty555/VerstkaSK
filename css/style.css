@@ -230,6 +230,7 @@ body {
   grid-gap: 10px;
   height: 100vh;
   margin: 0;
+  background-color: #ffffff;
 }
 
 .header-main {
@@ -237,14 +238,16 @@ body {
   -ms-grid-column: 1;
   -ms-grid-column-span: 3;
   grid-area: header;
+  border-bottom: 1px solid #848484;
 }
 
 .control-panel {
   -ms-grid-row: 2;
   -ms-grid-column: 1;
   grid-area: controls;
-  background-color: #EFF5FB;
-  border: 1px solid #CED8F6;
+  background-color: #DCDCDC;
+  border: 1px solid #848484;
+  border-radius: 5px;
 }
 
 .main-block {
@@ -255,6 +258,7 @@ body {
   padding-right: 20px;
   background-color: #EFF5FB;
   border: 1px solid #CED8F6;
+  border-radius: 5px;
 }
 
 .footer-main {
@@ -262,6 +266,7 @@ body {
   -ms-grid-column: 1;
   -ms-grid-column-span: 3;
   grid-area: footer;
+  border-top: 1px solid #848484;
 }
 
 .visually-hidden {
