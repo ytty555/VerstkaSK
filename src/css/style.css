@@ -222,7 +222,7 @@ body {
 .all-blocks {
   display: -ms-grid;
   display: grid;
-      grid-template-areas: "header header header" "controls pages line" "footer footer footer";
+      grid-template-areas: "header header header" "controls pages pages" "footer footer footer";
   -ms-grid-columns: 200px 1fr 1px;
       grid-template-columns: 200px 1fr 1px;
   -ms-grid-rows: 60px 1fr 60px;
@@ -254,6 +254,7 @@ body {
 .main-block {
   -ms-grid-row: 2;
   -ms-grid-column: 2;
+  -ms-grid-column-span: 2;
   grid-area: pages;
   padding-left: 20px;
   padding-right: 20px;
