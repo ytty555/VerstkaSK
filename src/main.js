@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './css/style.css';
 
-{/* <div className="page page_pos_left page_color page_delegated page_make-up page_photo"> */}
 function ElMakeUp(props) {
   return (
     <button className="page__el-make-up"></button>
@@ -27,16 +26,16 @@ function ElDelegated(props) {
 }
 
 function Page(props) {
-  let classN ='page ' + props.pos + ' ' + props.color;
+  let classN = 'page ' + props.pos + ' ' + props.color;
   return (
     <div className={classN}>
       <div className="page__el-background"></div>
       <div className="page__el-color"></div>
       <div className="page__el-number">{props.pageNum}</div>
       <ElMakeUp value={props.makeup} />
-      <ElPhoto value={props.photo}/>
-      <ElDelegated value={props.delegated}/>
-      
+      <ElPhoto value={props.photo} />
+      <ElDelegated value={props.delegated} />
+
     </div>
   );
 }
@@ -50,12 +49,42 @@ function PagePair(props) {
     </div>
   );
 }
+
 class MainBlock extends Component {
+  numForPair(count, pair) {
+    let res = [null, null];
+
+    function toTwo(num) {
+      return num < 10 ? '0' + String(num) : String(num);
+    }
+
+    if (pair === 1) {
+      res[0] = toTwo(count);
+      res[1] = toTwo(pair);
+    } else {
+      res[0] = toTwo(pair * 2 - 2);
+      res[1] = toTwo(pair * 2 - 1);
+    }
+
+    return res;
+  }
+
+  arrPagesPair(count) {
+    let arr = [];
+    for (let i = 1; i <= (count / 2); i++) {
+      arr.push(i);
+    }
+    const listItems = arr.map((pair) =>
+      this.renderPagePair(this.numForPair(count, pair)[0], this.numForPair(count, pair)[1])
+    );
+    return (
+      listItems
+    );
+  }
+
   renderPagePair(leftP, rightP) {
     return <PagePair leftPage={leftP} rightPage={rightP} />
   }
-
-  
 
   render() {
     return (
@@ -63,7 +92,7 @@ class MainBlock extends Component {
         <section className="page-section">
           <h1 className="visually-hidden">Раскладка полос</h1>
           <div className="page-grid-container">
-            {this.renderPagePair('02', '03')}
+            {this.arrPagesPair(28)}
           </div>
         </section>
       </main>
