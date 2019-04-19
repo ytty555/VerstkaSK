@@ -2,50 +2,50 @@ import React, { Component } from 'react';
 import './css/style.css';
 
 function ElMakeUp(props) {
+  let classN = 'page__el-make-up ' + props.value;
   return (
-    <button className="page__el-make-up"></button>
+    <button className={classN}></button>
   );
 }
 
 function ElPhoto(props) {
-  let classN = 'page__el-photo';
-
-  if (props.value) {
-    classN += ' page_photo';
-  }
+  let classN = 'page__el-photo ' + props.value;
 
   return (
-    <button className="page__el-photo"></button>
+    <button className={classN}></button>
   );
 }
 
 function ElDelegated(props) {
+  let classN = 'page__el-delegated ' + props.value;
   return (
-    <button className="page__el-delegated"></button>
+    <button className={classN}></button>
   );
 }
 
 function Page(props) {
-  let classN = 'page ' + props.pos + ' ' + props.color;
+  let classN = 'page ' + props.pos + ' ' + (props.pageState.pageColor ? 'page_color' : '');
   return (
     <div className={classN}>
       <div className="page__el-background"></div>
       <div className="page__el-color"></div>
-      <div className="page__el-number">{props.pageNum}</div>
-      <ElMakeUp value={props.makeup} />
-      <ElPhoto value={props.photo} />
-      <ElDelegated value={props.delegated} />
-
+      <div className="page__el-number">{props.pageState.pageID}</div>
+      <ElMakeUp value={props.pageState.makeup ? 'page_make-up' : ''} />
+      <ElPhoto value={props.pageState.photo ? 'page_photo' : ''} />
+      <ElDelegated value={props.pageState.delegated ? 'page_delegated' : ''} />
     </div>
   );
 }
 
 function PagePair(props) {
+  let stateLeftPage = props.stateLeftPage;
+  let stateRightPage = props.stateRightPage;
+
   return (
     <div className="page-pair">
       <img className="page-pair-background" src={require('./img/pair.svg')} alt="Изображение разворота полос" />
-      <Page pageNum={props.leftPage} pos='page_pos_left' color='page_color' delegated='page_delegated' makeup='' photo={1} />
-      <Page pageNum={props.rightPage} pos='page_pos_right' color='' delegated='' makeup='page_make-up' />
+      <Page pos='page_pos_left' pageState={stateLeftPage} />
+      <Page pos='page_pos_right' pageState={stateRightPage} />
     </div>
   );
 }
@@ -64,14 +64,13 @@ class MainBlock extends Component {
     };
 
     for (let i = 1; i <= pageQuantity; i++) {
-      let page = new pageInfoObj();
-      page.pageID = i;
-      page.pageColor = 0;
-      page.pageState.makeup = 0;
-      page.pageState.photo = 0;
-      page.pageState.delegated = 0;
-      
-      resArr.push(page);
+      pageInfoObj.pageID = i < 10 ? '0' + i : String(i);
+      pageInfoObj.pageColor = 0;
+      pageInfoObj.pageState.makeup = 0;
+      pageInfoObj.pageState.photo = 0;
+      pageInfoObj.pageState.delegated = 0;
+
+      resArr.push(pageInfoObj);
     }
 
     return resArr;
@@ -101,7 +100,19 @@ class MainBlock extends Component {
     }
 
     function renderPagePair(leftP, rightP) {
-      return <PagePair leftPage={leftP} rightPage={rightP} />
+      function getCurrentPageStatus(pID) {
+        let allPageState = this.state;
+        for (let i = 0; i < allPageState.length; i++) {
+          if (allPageState[i].pageID === pID) {
+            return allPageState[i];
+          }
+        }
+        return -1;
+      }
+
+      let lPS = getCurrentPageStatus(leftP);
+      let rPS = getCurrentPageStatus(rightP);
+      return <PagePair leftPage={leftP} rightPage={rightP} stateLeftPage={lPS} stateRightPage={rPS} />
     }
 
     let arr = [];
