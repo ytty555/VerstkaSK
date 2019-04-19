@@ -51,6 +51,36 @@ function PagePair(props) {
 }
 
 class MainBlock extends Component {
+  generateEmptyStateArray(pageQuantity) {
+    let resArr = [];
+    let pageInfoObj = {
+      pageID: null,
+      pageColor: 0,
+      pageState: {
+        makeup: 0,
+        photo: 0,
+        delegated: 0,
+      },
+    };
+
+    for (let i = 1; i <= pageQuantity; i++) {
+      let page = new pageInfoObj();
+      page.pageID = i;
+      page.pageColor = 0;
+      page.pageState.makeup = 0;
+      page.pageState.photo = 0;
+      page.pageState.delegated = 0;
+      
+      resArr.push(page);
+    }
+
+    return resArr;
+  }
+
+  constructor(props) {
+    super(props);
+    this.state = this.generateEmptyStateArray(28);
+  }
 
   arrPagesPair(count) {
     function numForPair(count, pair) {
