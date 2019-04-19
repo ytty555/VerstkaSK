@@ -4,7 +4,7 @@ import './css/style.css';
 function ElMakeUp(props) {
   let classN = 'page__el-make-up ' + props.valueState;
   return (
-    <button className={classN}></button>
+    <button className={classN} onClick={props.handleClickMakeup}></button>
   );
 }
 
@@ -52,6 +52,12 @@ function PagePair(props) {
 }
 
 class MainBlock extends Component {
+  constructor(props) {
+    super(props);
+    this.state = this.generateEmptyStateArray(28);
+    this.handleClickMakeup = this.handleClickMakeup.bind(this);
+  }
+
   generateEmptyStateArray(pageQuantity) {
     let resArr = [];
     let pageInfoObj = {
@@ -63,7 +69,6 @@ class MainBlock extends Component {
         delegated: null,
       },
     };
-
     for (let i = 1; i <= pageQuantity; i++) {
       pageInfoObj.pageID = i < 10 ? '0' + i : String(i);
       pageInfoObj.pageColor = 1;
@@ -74,13 +79,7 @@ class MainBlock extends Component {
       
       resArr.push(tempObj);
     }
-
     return resArr;
-  }
-
-  constructor(props) {
-    super(props);
-    this.state = this.generateEmptyStateArray(28);
   }
 
   arrPagesPair(count) {
@@ -115,7 +114,8 @@ class MainBlock extends Component {
 
       let lPS = getCurrentPageStatus(leftP);
       let rPS = getCurrentPageStatus(rightP);
-      return <PagePair stateLeftPage={lPS} stateRightPage={rPS} />
+      return (<PagePair stateLeftPage={lPS} stateRightPage={rPS} onClickMakeup={this.handleClickMakeup()}
+      />);
     }
 
     let arr = [];
@@ -130,6 +130,9 @@ class MainBlock extends Component {
     );
   }
 
+  handleClickMakeup() {
+    return;
+  }
 
   render() {
     return (
