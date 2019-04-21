@@ -4,7 +4,7 @@ import './css/style.css';
 function ElMakeUp(props) {
   let classN = 'page__el-make-up ' + props.valueState;
   return (
-    <button className={classN} onClick={props.handleClickMakeup}></button>
+    <button className={classN} onClick={props.onClickMakeUp}></button>
   );
 }
 
@@ -12,7 +12,7 @@ function ElPhoto(props) {
   let classN = 'page__el-photo ' + props.valueState;
 
   return (
-    <button className={classN}></button>
+    <button className={classN} onClick={props.onClickPhoto}></button>
   );
 }
 
@@ -23,30 +23,66 @@ function ElDelegated(props) {
   );
 }
 
-function Page(props) {
-  let isMakeUp = props.pageState.pageState.makeup;
-  let isPhoto = props.pageState.pageState.photo;
-  let isDelegated = props.pageState.pageState.delegated;
+class Page extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      makeup: false,
+      photo: false,
+      delegated: false,
+    }
+    this.handleClickMakeUp = this.handleClickMakeUp.bind(this);
+    this.handleClickPhoto = this.handleClickPhoto.bind(this);
+  }
 
-  let classN = 'page ' + props.pos + ' ' + (props.pageState.pageColor ? 'page_color' : '');
-  return (
-    <div className={classN}>
-      <div className="page__el-background"></div>
-      <div className="page__el-color"></div>
-      <div className="page__el-number">{props.pageState.pageID}</div>
-      <ElMakeUp valueState={isMakeUp ? 'page_make-up' : ''} />
-      <ElPhoto valueState={isPhoto ? 'page_photo' : ''} />
-      <ElDelegated valueState={isDelegated ? 'page_delegated' : ''} />
-    </div>
-  );
+  handleClickMakeUp() {
+    const currState = Object.assign({}, this.state);
+    currState.makeup = !this.state.makeup;
+    this.setState((state) => ({
+      makeup: currState.makeup,
+    }));
+  }
+
+  handleClickPhoto() {
+    const currState = Object.assign({}, this.state);
+    currState.photo = !this.state.photo;
+    this.setState((state) => ({
+      photo: currState.photo,
+    }));
+  }
+
+  render() {
+    return (
+      <div className={'page ' + this.props.pos + ' ' + (this.props.pageState.pageColor ? 'page_color' : '')} >
+        <div className="page__el-background"></div>
+        <div className="page__el-color"></div>
+        <div className="page__el-number">{this.props.pageState.pageID}</div>
+        <ElMakeUp
+          valueState={this.state.makeup ? 'page_make-up' : ''}
+          onClickMakeUp={() => this.handleClickMakeUp()}
+        />
+        <ElPhoto 
+          valueState={this.state.photo ? 'page_photo' : ''} 
+          onClickPhoto={() => this.handleClickPhoto()}
+        />
+        <ElDelegated valueState={this.state.delegated ? 'page_delegated' : ''} />
+      </div>
+    );
+  }
 }
 
 function PagePair(props) {
   return (
     <div className="page-pair">
       <img className="page-pair-background" src={require('./img/pair.svg')} alt="Изображение разворота полос" />
-      <Page pos='page_pos_left' pageState={props.stateLeftPage} />
-      <Page pos='page_pos_right' pageState={props.stateRightPage} />
+      <Page
+        pos='page_pos_left'
+        pageState={props.stateLeftPage}
+      />
+      <Page
+        pos='page_pos_right'
+        pageState={props.stateRightPage}
+      />
     </div>
   );
 }
@@ -55,8 +91,8 @@ class MainBlock extends Component {
   constructor(props) {
     super(props);
     this.state = this.generateEmptyStateArray(28);
-    this.handleClickMakeup = this.handleClickMakeup.bind(this);
   }
+
 
   generateEmptyStateArray(pageQuantity) {
     let resArr = [];
@@ -76,14 +112,14 @@ class MainBlock extends Component {
       pageInfoObj.pageState.photo = 1;
       pageInfoObj.pageState.delegated = 1;
       let tempObj = Object.assign({}, pageInfoObj);
-      
+
       resArr.push(tempObj);
     }
     return resArr;
   }
 
   arrPagesPair(count) {
-    let currState = this.state;
+    let self = this;
     function numForPair(count, pair) {
       let res = [null, null];
 
@@ -103,7 +139,7 @@ class MainBlock extends Component {
 
     function renderPagePair(leftP, rightP) {
       function getCurrentPageStatus(pID) {
-        let allPageState = currState;
+        let allPageState = self.state;
         for (let i = 0; i < allPageState.length; i++) {
           if (allPageState[i].pageID === pID) {
             return allPageState[i];
@@ -114,8 +150,7 @@ class MainBlock extends Component {
 
       let lPS = getCurrentPageStatus(leftP);
       let rPS = getCurrentPageStatus(rightP);
-      return (<PagePair stateLeftPage={lPS} stateRightPage={rPS} onClickMakeup={this.handleClickMakeup()}
-      />);
+      return (<PagePair stateLeftPage={lPS} stateRightPage={rPS} />);
     }
 
     let arr = [];
@@ -130,9 +165,6 @@ class MainBlock extends Component {
     );
   }
 
-  handleClickMakeup() {
-    return;
-  }
 
   render() {
     return (
