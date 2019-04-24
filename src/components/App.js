@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import './css/style.css';
-import HeaderMain from './header';
-import FooterMain from './footer';
-import ControlPanel from './control';
-import MainBlock from './main';
+import HeaderMain from './HeaderMain';
+import FooterMain from './FooterMain';
+import ControlPanel from './ControlPanel';
+import MainBlock from './MainBlock';
 
 class App extends Component {
   render() {
