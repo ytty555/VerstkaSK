@@ -4,7 +4,8 @@ function ElPhoto(props) {
   let classN = 'page__el-photo ' + props.valueState;
 
   return (
-    <button className={classN} onClick={props.onClickPhoto}></button>
+    <button className={classN} onClick={props.onClickPhoto}>
+    </button>
   );
 }
 

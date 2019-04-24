@@ -21,9 +21,9 @@ class MainBlock extends Component {
     for (let i = 1; i <= pageQuantity; i++) {
       pageInfoObj.pageID = i < 10 ? '0' + i : String(i);
       pageInfoObj.pageColor = 1;
-      pageInfoObj.pageState.makeup = 1;
-      pageInfoObj.pageState.photo = 1;
-      pageInfoObj.pageState.delegated = 1;
+      pageInfoObj.pageState.makeup = false;
+      pageInfoObj.pageState.photo = false;
+      pageInfoObj.pageState.delegated = false;
       let tempObj = Object.assign({}, pageInfoObj);
 
       resArr.push(tempObj);
@@ -33,9 +33,13 @@ class MainBlock extends Component {
 
   arrPagesPair(count) {
     let self = this;
+
+    // Функция возвращает номера полос разворота в виде массива номеров полос (левая и правая)
     function numForPair(count, pair) {
+      // Массив из номеров полос: левая полоса и правая
       let res = [null, null];
 
+      // Переводит num в струку из двух символов
       function toTwo(num) {
         return num < 10 ? '0' + String(num) : String(num);
       }
@@ -63,7 +67,7 @@ class MainBlock extends Component {
 
       let lPS = getCurrentPageStatus(leftP);
       let rPS = getCurrentPageStatus(rightP);
-      return (<PagePair stateLeftPage={lPS} stateRightPage={rPS} />);
+      return (<PagePair key={lPS.pageID + rPS.pageID} stateLeftPage={lPS} stateRightPage={rPS} />);
     }
 
     let arr = [];

@@ -198,6 +198,10 @@ body {
   background-image: url("../img/photo-right-0.svg");
 }
 
+.page_pos_right .page_photo {
+  background-image: url("../img/photo-left-1.svg");
+}
+
 .page_pos_right .page__el-background {
   left: 86px;
   top: 5px;
