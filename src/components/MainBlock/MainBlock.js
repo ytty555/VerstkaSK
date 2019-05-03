@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import PagePair from './PagePair';
+import React, { Component } from "react";
+import PagePair from "./PagePair";
 
 class MainBlock extends Component {
   constructor(props) {
@@ -15,11 +15,11 @@ class MainBlock extends Component {
       pageState: {
         makeup: null,
         photo: null,
-        delegated: null,
-      },
+        delegated: null
+      }
     };
     for (let i = 1; i <= pageQuantity; i++) {
-      pageInfoObj.pageID = i < 10 ? '0' + i : String(i);
+      pageInfoObj.pageID = i < 10 ? "0" + i : String(i);
       pageInfoObj.pageColor = 1;
       pageInfoObj.pageState.makeup = false;
       pageInfoObj.pageState.photo = false;
@@ -41,7 +41,7 @@ class MainBlock extends Component {
 
       // Переводит num в струку из двух символов
       function toTwo(num) {
-        return num < 10 ? '0' + String(num) : String(num);
+        return num < 10 ? "0" + String(num) : String(num);
       }
 
       if (pair === 1) {
@@ -67,19 +67,23 @@ class MainBlock extends Component {
 
       let lPS = getCurrentPageStatus(leftP);
       let rPS = getCurrentPageStatus(rightP);
-      return (<PagePair key={lPS.pageID + rPS.pageID} stateLeftPage={lPS} stateRightPage={rPS} />);
+      return (
+        <PagePair
+          key={lPS.pageID + rPS.pageID}
+          stateLeftPage={lPS}
+          stateRightPage={rPS}
+        />
+      );
     }
 
     let arr = [];
-    for (let i = 1; i <= (count / 2); i++) {
+    for (let i = 1; i <= count / 2; i++) {
       arr.push(i);
     }
-    const listItems = arr.map((pair) =>
+    const listItems = arr.map(pair =>
       renderPagePair(numForPair(count, pair)[0], numForPair(count, pair)[1])
     );
-    return (
-      listItems
-    );
+    return listItems;
   }
 
   render() {
@@ -87,9 +91,7 @@ class MainBlock extends Component {
       <main className="main-block">
         <section className="page-section">
           <h1 className="visually-hidden">Раскладка полос</h1>
-          <div className="page-grid-container">
-            {this.arrPagesPair(28)}
-          </div>
+          <div className="page-grid-container">{this.arrPagesPair(28)}</div>
         </section>
       </main>
     );

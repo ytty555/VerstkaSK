@@ -1,31 +1,44 @@
-import React, { Component } from 'react';
-import ElMakeUp from './ElMakeUp';
-import ElPhoto from './ElPhoto';
-import ElDelegated from './ElDelegated';
+import React from "react";
+import PropTypes from "prop-types";
 
-class Page extends Component {
-  render() {
-    const idPage = this.props.pageNum;
-    return (
-      <div className={'page ' + this.props.pos + ' ' + (this.props.pageState.pageColor ? 'page_color' : '')} >
-        <div className="page__el-background"></div>
-        <div className="page__el-color"></div>
-        <div className="page__el-number">{this.props.pageNum}</div>
-        <ElMakeUp
-          valueState={this.props.pageState.makeup ? 'page_make-up' : ''}
-          onClickMakeUp={() => this.props.onClickMakeUp()}
-        />
-        <ElPhoto
-          valueState={this.props.pageState.photo ? 'page_photo' : ''}
-          onClickPhoto={() => this.props.onClickPhoto()}
-        />
-        <ElDelegated 
-          valueState={this.props.pageState.delegated ? 'page_delegated' : ''} 
-          onClickDelegated={() => this.props.onClickDelegated()}
-        />
-      </div>
-    );
+function Page({ position, pageState }) {
+  const el = getElementsClassNames(position);
+  const pageColor = pageState.pageColor ? " page_color" : "";
+
+  return (
+    <div className={el.pagePosition}>
+      <div className={"page__el-color" + pageColor} />
+      <div className="page__el-number">{pageState.pageId}</div>
+      <button className="page__el-make-up" />
+      <button className="page__el-photo" />
+      <button className="page__el-delegated " />
+    </div>
+  );
+}
+
+function getElementsClassNames(position) {
+  if (position === 0) {
+    // левая полоса
+    return {
+      pagePosition: "page_pos_left"
+    };
+  } else if (position === 1) {
+    // правая полоса
+    return {
+      pagePosition: "page_pos_right"
+    };
   }
 }
 
-export default Page
+Page.propTypes = {
+  position: PropTypes.number.isRequired,
+  pageState: PropTypes.shape({
+    pageId: PropTypes.number.isRequired,
+    pageColor: PropTypes.bool.isRequired,
+    pageMakeUp: PropTypes.bool.isRequired,
+    pagePhoto: PropTypes.bool.isRequired,
+    pageDelegated: PropTypes.bool.isRequired
+  })
+};
+
+export default Page;
