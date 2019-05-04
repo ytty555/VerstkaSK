@@ -4,10 +4,23 @@ import PropTypes from "prop-types";
 function Page({ position, pageState }) {
   const el = getElementsClassNames(position);
   const pageColor = pageState.pageColor ? " page_color" : "";
+  const pageMakeUp = pageState.pageMakeUp ? " page_make-up" : "";
+  const pagePhoto = pageState.pagePhoto ? " page_photo" : "";
+  const pageDelegated = pageState.pageDelegated ? " page_delegated" : "";
 
   return (
-    <div className={el.pagePosition}>
-      <div className={"page__el-color" + pageColor} />
+    <div
+      className={
+        "page" +
+        el.pagePosition +
+        pageColor +
+        pageMakeUp +
+        pagePhoto +
+        pageDelegated
+      }
+    >
+      <div className="page__el-background" />
+      <div className="page__el-color" />
       <div className="page__el-number">{pageState.pageId}</div>
       <button className="page__el-make-up" />
       <button className="page__el-photo" />
@@ -20,12 +33,12 @@ function getElementsClassNames(position) {
   if (position === 0) {
     // левая полоса
     return {
-      pagePosition: "page_pos_left"
+      pagePosition: " page_pos_left"
     };
   } else if (position === 1) {
     // правая полоса
     return {
-      pagePosition: "page_pos_right"
+      pagePosition: " page_pos_right"
     };
   }
 }
