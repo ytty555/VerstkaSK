@@ -14,7 +14,7 @@ function Page({ position, pageState, onClick }) {
     pageMakeUp +
     pagePhoto +
     pageDelegated;
-  const {pageId} = pageState;
+  const { pageId } = pageState;
 
   return (
     <div className={pageClassName}>
@@ -22,7 +22,7 @@ function Page({ position, pageState, onClick }) {
       <div className="page__el-color" />
       <div className="page__el-number">{pageId}</div>
       {/* controls */}
-      <button className="page__el-make-up" onClick={onClick}/>
+      <button className="page__el-make-up" onClick={onClick} />
       <button className="page__el-photo" />
       <button className="page__el-delegated " />
     </div>
