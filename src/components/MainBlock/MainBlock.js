@@ -4,10 +4,10 @@ import PagePair from "./PagePair";
 class MainBlock extends Component {
   constructor(props) {
     super(props);
-    this.state = this.generateEmptyStateArray(28);
+    this.state = this.generateStateArray(28);
   }
 
-  generateEmptyStateArray(pageQuantity) {
+  generateStateArray(pageQuantity) {
     let resArr = [];
     let pageInfoObj = {
       pageID: null,
