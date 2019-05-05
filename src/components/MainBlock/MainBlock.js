@@ -8,7 +8,7 @@ class MainBlock extends Component {
     this.state = this.generateStateArray(this.getPageQuantity());
   }
 
-  getPageQuantity = () => 28;
+  getPageQuantity = () => 24;
 
   generateStateArray = pageQuantity => {
     const pairs = pageQuantity / 2;
