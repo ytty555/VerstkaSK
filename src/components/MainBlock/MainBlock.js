@@ -13,7 +13,7 @@ class MainBlock extends Component {
   generateStateArray = pageQuantity => {
     const pairs = pageQuantity / 2;
     let resArr = {};
-    
+
     (() => {
       for (let i = 1; i <= pairs; i++) {
         const keyObj = this.toTwo(i);
@@ -78,11 +78,49 @@ class MainBlock extends Component {
     let el = null;
 
     for (let i = 1; i <= PageQuantity / 2; i++) {
-      el = <PagePair statePage={state[this.toTwo(i)]} />;
+      el = (
+        <PagePair
+          key={this.toTwo(i)}
+          statePage={state[this.toTwo(i)]}
+          handleOnClickMakeup={this.handleOnClickMakeUp(i)}
+          handleOnClickPhoto={this.handleOnClickPhoto(i)}
+          handleOnClickDelegated={this.handleOnClickDelegated(i)}
+        />
+      );
       elList.push(el);
     }
 
     return elList;
+  };
+
+  handleOnClickMakeUp = pagePairNumber => posLR => ev => {
+    const pagePairNumStr = this.toTwo(pagePairNumber);
+    const state = this.state[pagePairNumStr];
+    const stateTmp = Object.assign({}, state);
+    stateTmp[posLR].pageMakeup = !state[posLR].pageMakeup;
+    this.setState({
+      [state]: stateTmp
+    });
+  };
+
+  handleOnClickPhoto = pagePairNumber => posLR => ev => {
+    const pagePairNumStr = this.toTwo(pagePairNumber);
+    const state = this.state[pagePairNumStr];
+    const stateTmp = Object.assign({}, state);
+    stateTmp[posLR].pagePhoto = !state[posLR].pagePhoto;
+    this.setState({
+      [state]: stateTmp
+    });
+  };
+  
+  handleOnClickDelegated = pagePairNumber => posLR => ev => {
+    const pagePairNumStr = this.toTwo(pagePairNumber);
+    const state = this.state[pagePairNumStr];
+    const stateTmp = Object.assign({}, state);
+    stateTmp[posLR].pageDelegated = !state[posLR].pageDelegated;
+    this.setState({
+      [state]: stateTmp
+    });
   };
 }
 

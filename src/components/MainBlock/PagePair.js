@@ -1,6 +1,5 @@
 import React from "react";
 import Page from "./Page";
-import PropTypes from "prop-types";
 
 function PagePair(props) {
   const left = 0;
@@ -13,18 +12,20 @@ function PagePair(props) {
         src={require("../../img/pair.svg")}
         alt="Изображение разворота полос"
       />
-      <Page position={left} pageState={props.statePage.left} />
-      <Page position={right} pageState={props.statePage.right} />
-      {/* <Page
+      <Page
         position={left}
         pageState={props.statePage.left}
-        onClick={props.handleOnMakeup(left)}
+        onClickMakeup={props.handleOnClickMakeup("left")}
+        onClickPhoto={props.handleOnClickPhoto("left")}
+        onClickDelegated={props.handleOnClickDelegated("left")}
       />
       <Page
         position={right}
         pageState={props.statePage.right}
-        onClick={props.handleOnMakeup(right)}
-      /> */}
+        onClickMakeup={props.handleOnClickMakeup("right")}
+        onClickPhoto={props.handleOnClickPhoto("right")}
+        onClickDelegated={props.handleOnClickDelegated("right")}
+      />
     </div>
   );
 }
