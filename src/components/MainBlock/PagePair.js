@@ -1,6 +1,6 @@
 import React from "react";
-import statePage from "../../decorators/statePage";
 import Page from "./Page";
+import PropTypes from "prop-types";
 
 function PagePair(props) {
   const left = 0;
@@ -13,7 +13,9 @@ function PagePair(props) {
         src={require("../../img/pair.svg")}
         alt="Изображение разворота полос"
       />
-      <Page
+      <Page position={left} pageState={props.statePage.left} />
+      <Page position={right} pageState={props.statePage.right} />
+      {/* <Page
         position={left}
         pageState={props.statePage.left}
         onClick={props.handleOnMakeup(left)}
@@ -22,9 +24,9 @@ function PagePair(props) {
         position={right}
         pageState={props.statePage.right}
         onClick={props.handleOnMakeup(right)}
-      />
+      /> */}
     </div>
   );
 }
 
-export default statePage(PagePair);
+export default PagePair;
