@@ -16,6 +16,7 @@ function Page({
     "page" +
     el.pagePosition +
     pageColor +
+    pagePhoto +
     pageMakeUp +
     pageDelegated;
   const { pageId } = pageState;
@@ -27,7 +28,7 @@ function Page({
       <div className="page__el-number">{pageId}</div>
       {/* controls */}
       <button className="page__el-make-up" onClick={onClickMakeup} />
-      <button className={"page__el-photo" + pagePhoto} onClick={onClickPhoto} />
+      <button className={el.pageElPhoto} onClick={onClickPhoto} />
       <button className="page__el-delegated" onClick={onClickDelegated} />
     </div>
   );
@@ -37,12 +38,14 @@ function getElementsClassNames(position) {
   if (position === 0) {
     // левая полоса
     return {
-      pagePosition: " page_pos_left"
+      pagePosition: " page_pos_left",
+      pageElPhoto: "page__el-photo_left"
     };
   } else if (position === 1) {
     // правая полоса
     return {
-      pagePosition: " page_pos_right"
+      pagePosition: " page_pos_right",
+      pageElPhoto: "page__el-photo_right"
     };
   }
 }

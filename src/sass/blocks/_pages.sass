@@ -17,7 +17,8 @@
     height: 112px
    
 .page__el-make-up,
-.page__el-photo,
+.page__el-photo_left,
+.page__el-photo_right,
 .page__el-delegated,
 .page__el-number
     font-family: 'D-DIN Bold'
@@ -82,14 +83,6 @@
     & .page__el-color
         left: 6px
         top: 6px
-    & .page__el-photo
-        left: 13px
-        top: 33px
-        height: 38px
-        width: 55px
-        background-image: url('../img/photo-left-0.svg')
-    & .page_photo .page__el-photo
-        background-image: url('../img/photo-left-1.svg')
     & .page__el-background
         left: 6px 
         top: 5px
@@ -110,14 +103,6 @@
     & .page__el-color
         left: 139px
         top: 6px
-    & .page__el-photo
-        left: 93px
-        top: 33px
-        height: 38px
-        width: 55px
-        background-image: url('../img/photo-right-0.svg')
-    & .page_photo .page__el-photo
-        background-image: url('../img/photo-right-1.svg')
     & .page__el-background
         left: 86px 
         top: 5px
@@ -128,4 +113,21 @@
         left: 92px 
         top: 83px
 
+.page__el-photo_left
+    left: 13px
+    top: 33px
+    height: 38px
+    width: 55px
+    background-image: url('../img/photo-left-0.svg')
+.page_photo .page__el-photo_left
+    background-image: url('../img/photo-left-1.svg')
+
+.page__el-photo_right
+    left: 93px
+    top: 33px
+    height: 38px
+    width: 55px
+    background-image: url('../img/photo-right-0.svg')
+.page_photo .page__el-photo_right
+    background-image: url('../img/photo-right-1.svg')
     
