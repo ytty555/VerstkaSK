@@ -20,6 +20,18 @@ body {
 
 .header-main {
   background-color: #DCDCDC;
+  padding-top: 10px;
+  padding-left: 20px;
+}
+
+.header__info {
+  font-family: Geneva, Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  margin: 0;
+}
+
+.header__info span {
+  color: red;
 }
 
 .page-section {
@@ -266,6 +278,14 @@ body {
   opacity: 1;
 }
 
+.page_delegated .page__el-photo_left {
+  background-image: url("../img/photo-left-1.svg");
+}
+
+.page_delegated .page__el-photo_right {
+  background-image: url("../img/photo-right-1.svg");
+}
+
 .all-blocks {
   display: -ms-grid;
   display: grid;
@@ -341,5 +361,14 @@ body {
 
 .footer-main {
   background-color: #DCDCDC;
+}
+
+.app-version {
+  font-family: courier;
+  color: black;
+  font-size: 14px;
+  text-align: right;
+  margin-right: 20px;
+  margin-top: 35px;
 }
 /*# sourceMappingURL=style.css.map */

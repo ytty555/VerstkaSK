@@ -8,12 +8,13 @@ class MainBlock extends Component {
     this.state = this.generateStateArray(this.getPageQuantity());
   }
 
-  getPageQuantity = () => 24;
+  getPageQuantity = () => 28;
 
   generateStateArray = pageQuantity => {
     const pairs = pageQuantity / 2;
     let resArr = {};
 
+    // Первичное заполнение состояния
     (() => {
       for (let i = 1; i <= pairs; i++) {
         const keyObj = this.toTwo(i);
@@ -60,15 +61,27 @@ class MainBlock extends Component {
   };
 
   render() {
+    const info = this.getPageInfo(this.state);
+    const pQuantity = info.pagesQuantity;
+    const pMakeUp = info.pagesMakeUp;
+    const pPhoto = info.pagesPhoto;
+    const pDelegated = info.pagesDelegated;
+
     return (
-      <main className="main-block">
-        <section className="page-section">
-          <h1 className="visually-hidden">Раскладка полос</h1>
-          <div className="page-grid-container">
-            {this.renderPagePairList(this.getPageQuantity())}
-          </div>
-        </section>
-      </main>
+      <React.Fragment>
+        <header className="header-main">
+          <p className="header__info">Всего полос в номере: <span>{pQuantity}</span></p>
+          <p className="header__info">Сверстано полос: <span>{pMakeUp}</span></p>
+        </header>
+        <main className="main-block">
+          <section className="page-section">
+            <h1 className="visually-hidden">Раскладка полос</h1>
+            <div className="page-grid-container">
+              {this.renderPagePairList(this.getPageQuantity())}
+            </div>
+          </section>
+        </main>
+      </React.Fragment>
     );
   }
 
@@ -98,6 +111,13 @@ class MainBlock extends Component {
     const state = this.state[pagePairNumStr];
     const stateTmp = Object.assign({}, state);
     stateTmp[posLR].pageMakeup = !state[posLR].pageMakeup;
+    stateTmp[posLR].pageDelegated =
+      stateTmp[posLR].pageDelegated && stateTmp[posLR].pageMakeup
+        ? false
+        : stateTmp[posLR].pageDelegated;
+    stateTmp[posLR].pagePhoto = !stateTmp[posLR].pageMakeup
+      ? false
+      : stateTmp[posLR].pagePhoto;
     this.setState({
       [state]: stateTmp
     });
@@ -107,21 +127,56 @@ class MainBlock extends Component {
     const pagePairNumStr = this.toTwo(pagePairNumber);
     const state = this.state[pagePairNumStr];
     const stateTmp = Object.assign({}, state);
+    if (!stateTmp[posLR].pageMakeup) return;
     stateTmp[posLR].pagePhoto = !state[posLR].pagePhoto;
     this.setState({
       [state]: stateTmp
     });
   };
-  
+
   handleOnClickDelegated = pagePairNumber => posLR => ev => {
     const pagePairNumStr = this.toTwo(pagePairNumber);
     const state = this.state[pagePairNumStr];
     const stateTmp = Object.assign({}, state);
     stateTmp[posLR].pageDelegated = !state[posLR].pageDelegated;
+    stateTmp[posLR].pageMakeup =
+      stateTmp[posLR].pageMakeup && stateTmp[posLR].pageDelegated
+        ? false
+        : stateTmp[posLR].pageMakeup;
+    stateTmp[posLR].pagePhoto = !stateTmp[posLR].pageMakeup
+      ? false
+      : stateTmp[posLR].pagePhoto;
     this.setState({
       [state]: stateTmp
     });
   };
+
+  // получаем сводную информацию по полосам из state
+  getPageInfo = (stateObj) => {
+    let pagesDelegated = 0;
+    let pagesMakeUp = 0;
+    let pagesPhoto = 0;
+    let res = {};
+
+    
+    // полос делегировано
+    for (let pair in stateObj) {
+      for (let page in stateObj[pair]) {
+        const currPage = stateObj[pair][page];
+        console.log(currPage);
+        pagesDelegated += currPage.pageDelegated ? 1 : 0;
+        pagesMakeUp += currPage.pageMakeup ? 1 : 0;
+        pagesPhoto += currPage.pagePhoto ? 1 : 0;
+      }
+    }
+  
+    res.pagesQuantity = this.getPageQuantity();
+    res.pagesDelegated = pagesDelegated;
+    res.pagesMakeUp = pagesMakeUp;
+    res.pagesPhoto = pagesPhoto;
+
+    return res;
+  }
 }
 
 export default MainBlock;
