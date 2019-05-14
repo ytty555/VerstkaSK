@@ -57,6 +57,7 @@ body {
 .page__el-photo_right,
 .page__el-delegated,
 .page__el-number {
+  opacity: 1;
   font-family: 'D-DIN Bold';
   font-size: 23px;
   color: #848484;
@@ -194,6 +195,26 @@ body {
 
 .page_photo .page__el-photo_right {
   background-image: url("../img/photo-right-1.svg");
+}
+
+.page__el-make-up:hover {
+  opacity: 0.5;
+  background-image: url("../img/v-1.svg");
+}
+
+.page__el-photo_left:hover {
+  opacity: 0.5;
+  background-image: url("../img/photo-left-1.svg");
+}
+
+.page__el-photo_right:hover {
+  opacity: 0.5;
+  background-image: url("../img/photo-right-1.svg");
+}
+
+.page__el-delegated:hover {
+  opacity: 0.5;
+  background-image: url("../img/delegeted-1.svg");
 }
 
 .all-blocks {
