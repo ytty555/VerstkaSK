@@ -23,7 +23,7 @@ function Page({
 
   return (
     <div className={pageClassName}>
-      <div className="page__el-background" />
+      <div className={el.pageBG} />
       <div className="page__el-color" />
       <div className="page__el-number">{pageId}</div>
       {/* controls */}
@@ -39,13 +39,15 @@ function getElementsClassNames(position) {
     // левая полоса
     return {
       pagePosition: " page_pos_left",
-      pageElPhoto: "page__el-photo_left"
+      pageElPhoto: "page__el-photo_left",
+      pageBG: "page__el-background_left"
     };
   } else if (position === 1) {
     // правая полоса
     return {
       pagePosition: " page_pos_right",
-      pageElPhoto: "page__el-photo_right"
+      pageElPhoto: "page__el-photo_right",
+      pageBG: "page__el-background_right"
     };
   }
 }
