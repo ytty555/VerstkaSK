@@ -20,7 +20,7 @@ body {
 
 .header-main {
   background-color: #DCDCDC;
-  padding-top: 10px;
+  padding-top: 5px;
   padding-left: 20px;
 }
 
@@ -32,6 +32,12 @@ body {
 
 .header__info span {
   color: red;
+}
+
+.choose-pages {
+  list-style: none;
+  font-family: Geneva, Arial, Helvetica, sans-serif;
+  padding: 0;
 }
 
 .page-section {
@@ -84,6 +90,10 @@ body {
   text-align: center;
   text-decoration: none;
   z-index: 1;
+}
+
+.page__el-number {
+  cursor: default;
 }
 
 .page__el-make-up {
