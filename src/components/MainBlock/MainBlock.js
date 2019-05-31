@@ -66,7 +66,6 @@ class MainBlock extends Component {
     const info = this.getPageInfo();
     const pQuantity = info.pagesQuantity;
     const pMakeUp = info.pagesMakeUp;
-    const pPhoto = info.pagesPhoto;
     const pDelegated = info.pagesDelegated;
 
     return (
@@ -188,7 +187,7 @@ class MainBlock extends Component {
     console.log('State --', currState);
 
     for (let pair in currState) {
-      if (pair == "[object Object]") break;
+      if (pair === "[object Object]") break;
       for (let page in currState[pair]) {
         const currPage = currState[pair][page];
         pagesDelegated += currPage.pageDelegated ? 1 : 0;
