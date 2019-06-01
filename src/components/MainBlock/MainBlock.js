@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PagePair from "./PagePair";
-import { commonPagesColorScheme } from "./proglogic";
+import { isColorPage } from "./proglogic";
 
 class MainBlock extends Component {
   constructor(props) {
@@ -23,14 +23,14 @@ class MainBlock extends Component {
         const currPair = {
           left: {
             pageId: numForPair[0],
-            pageColor: true,
+            pageColor: isColorPage(pageQuantity, numForPair[0]),
             pageMakeup: false,
             pagePhoto: false,
             pageDelegated: false
           },
           right: {
             pageId: numForPair[1],
-            pageColor: false,
+            pageColor: isColorPage(pageQuantity, numForPair[1]),
             pageMakeup: false,
             pagePhoto: false,
             pageDelegated: false
