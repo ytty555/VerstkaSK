@@ -1,68 +1,23 @@
 import React, { Component } from "react";
 import PagePair from "./PagePair";
-import { isColorPage } from "./proglogic";
+import {
+  toTwo,
+  getPageQuantity,
+  getPageInfo,
+  generateStateArray
+} from "./proglogic";
 
 class MainBlock extends Component {
   constructor(props) {
     super(props);
 
-    this.state = this.generateStateArray(this.getPageQuantity());
+    this.state = generateStateArray(getPageQuantity());
   }
 
-  getPageQuantity = () => 28;
-
-  generateStateArray = pageQuantity => {
-    const pairs = pageQuantity / 2;
-    let resArr = {};
-
-    // Первичное заполнение состояния
-    (() => {
-      for (let i = 1; i <= pairs; i++) {
-        const keyObj = this.toTwo(i);
-        const numForPair = this.numForPair(pageQuantity, i);
-        const currPair = {
-          left: {
-            pageId: numForPair[0],
-            pageColor: isColorPage(pageQuantity, numForPair[0]),
-            pageMakeup: false,
-            pagePhoto: false,
-            pageDelegated: false
-          },
-          right: {
-            pageId: numForPair[1],
-            pageColor: isColorPage(pageQuantity, numForPair[1]),
-            pageMakeup: false,
-            pagePhoto: false,
-            pageDelegated: false
-          }
-        };
-        resArr[keyObj] = currPair;
-      }
-    })();
-
-    return resArr;
-  };
-
-  // Переводит num в струку из двух символов
-  toTwo = num => (num < 10 ? "0" + String(num) : String(num));
-
-  numForPair = (pageQuantity, pairNumber) => {
-    // Функция возвращает номера полос разворота в виде массива номеров полос (левая и правая)
-    // Массив из номеров полос: левая полоса и правая
-    let res = [null, null];
-
-    if (pairNumber === 1) {
-      res[0] = this.toTwo(pageQuantity);
-      res[1] = this.toTwo(pairNumber);
-    } else {
-      res[0] = this.toTwo(pairNumber * 2 - 2);
-      res[1] = this.toTwo(pairNumber * 2 - 1);
-    }
-    return res;
-  };
+  
 
   render() {
-    const info = this.getPageInfo();
+    const info = getPageInfo(this.state);
     const pQuantity = info.pagesQuantity;
     const pMakeUp = info.pagesMakeUp;
     const pDelegated = info.pagesDelegated;
@@ -86,7 +41,7 @@ class MainBlock extends Component {
             <h1 className="visually-hidden"> Раскладка полос </h1>
             <div className="page-grid-container">
               {" "}
-              {this.renderPagePairList(this.getPageQuantity())}
+              {this.renderPagePairList(getPageQuantity())}
             </div>
           </section>
         </main>
@@ -134,8 +89,8 @@ class MainBlock extends Component {
     for (let i = 1; i <= PageQuantity / 2; i++) {
       el = (
         <PagePair
-          key={this.toTwo(i)}
-          statePage={state[this.toTwo(i)]}
+          key={toTwo(i)}
+          statePage={state[toTwo(i)]}
           handleOnClickMakeup={this.handleOnClickMakeUp(i)}
           handleOnClickPhoto={this.handleOnClickPhoto(i)}
           handleOnClickDelegated={this.handleOnClickDelegated(i)}
@@ -148,7 +103,7 @@ class MainBlock extends Component {
   };
 
   handleOnClickMakeUp = pagePairNumber => posLR => ev => {
-    const pagePairNumStr = this.toTwo(pagePairNumber);
+    const pagePairNumStr = toTwo(pagePairNumber);
     const state = this.state[pagePairNumStr];
     const stateTmp = Object.assign({}, state);
     stateTmp[posLR].pageMakeup = !state[posLR].pageMakeup;
@@ -165,7 +120,7 @@ class MainBlock extends Component {
   };
 
   handleOnClickPhoto = pagePairNumber => posLR => ev => {
-    const pagePairNumStr = this.toTwo(pagePairNumber);
+    const pagePairNumStr = toTwo(pagePairNumber);
     const state = this.state[pagePairNumStr];
     const stateTmp = Object.assign({}, state);
     if (!stateTmp[posLR].pageMakeup) return;
@@ -176,7 +131,7 @@ class MainBlock extends Component {
   };
 
   handleOnClickDelegated = pagePairNumber => posLR => ev => {
-    const pagePairNumStr = this.toTwo(pagePairNumber);
+    const pagePairNumStr = toTwo(pagePairNumber);
     const state = this.state[pagePairNumStr];
     const stateTmp = Object.assign({}, state);
     stateTmp[posLR].pageDelegated = !state[posLR].pageDelegated;
@@ -190,33 +145,6 @@ class MainBlock extends Component {
     this.setState({
       [state]: stateTmp
     });
-  };
-
-  // получаем сводную информацию по полосам из state
-  getPageInfo = () => {
-    const currState = this.state;
-    let pagesDelegated = 0;
-    let pagesMakeUp = 0;
-    let pagesPhoto = 0;
-    let res = {};
-    console.log("State --", currState);
-
-    for (let pair in currState) {
-      if (pair === "[object Object]") break;
-      for (let page in currState[pair]) {
-        const currPage = currState[pair][page];
-        pagesDelegated += currPage.pageDelegated ? 1 : 0;
-        pagesMakeUp += currPage.pageMakeup ? 1 : 0;
-        pagesPhoto += currPage.pagePhoto ? 1 : 0;
-      }
-    }
-
-    res.pagesQuantity = this.getPageQuantity();
-    res.pagesDelegated = pagesDelegated;
-    res.pagesMakeUp = pagesMakeUp;
-    res.pagesPhoto = pagesPhoto;
-
-    return res;
   };
 }
 
