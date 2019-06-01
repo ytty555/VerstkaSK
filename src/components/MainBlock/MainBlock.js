@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PagePair from "./PagePair";
+import PagesBlock from "./PagesBlock";
 import {
   toTwo,
   getPageQuantity,
@@ -34,14 +34,12 @@ class MainBlock extends Component {
             <span>{pQuantity - (pMakeUp + pDelegated)}</span>
           </p>
         </header>
-        <main className="main-block">
-          <section className="page-section">
-            <h1 className="visually-hidden"> Раскладка полос </h1>
-            <div className="page-grid-container">
-              {this.renderPagePairList(getPageQuantity())}
-            </div>
-          </section>
-        </main>
+        <PagesBlock 
+          state={this.state}
+          handleOnClickMakeUp={this.handleOnClickMakeUp}
+          handleOnClickPhoto={this.handleOnClickPhoto}
+          handleOnClickDelegated={this.handleOnClickDelegated}
+        />
         <section className="control-panel">
           <ul>
             <li className="choose-pages">
@@ -78,30 +76,12 @@ class MainBlock extends Component {
     );
   }
 
-  renderPagePairList = PageQuantity => {
-    const state = this.state;
-    let elList = [];
-    let el = null;
-
-    for (let i = 1; i <= PageQuantity / 2; i++) {
-      el = (
-        <PagePair
-          key={toTwo(i)}
-          statePage={state[toTwo(i)]}
-          handleOnClickMakeup={this.handleOnClickMakeUp(i)}
-          handleOnClickPhoto={this.handleOnClickPhoto(i)}
-          handleOnClickDelegated={this.handleOnClickDelegated(i)}
-        />
-      );
-      elList.push(el);
-    }
-
-    return elList;
-  };
+  
 
   handleNewPagesField = () => {};
 
-  handleOnClickMakeUp = pagePairNumber => posLR => ev => {
+
+ handleOnClickMakeUp = pagePairNumber => posLR => ev => {
     const pagePairNumStr = toTwo(pagePairNumber);
     const state = this.state[pagePairNumStr];
     const stateTmp = Object.assign({}, state);
@@ -145,6 +125,7 @@ class MainBlock extends Component {
       [state]: stateTmp
     });
   };
+  
 }
 
 export default MainBlock;
