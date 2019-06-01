@@ -14,8 +14,6 @@ class MainBlock extends Component {
     this.state = generateStateArray(getPageQuantity());
   }
 
-  
-
   render() {
     const info = getPageInfo(this.state);
     const pQuantity = info.pagesQuantity;
@@ -32,7 +30,7 @@ class MainBlock extends Component {
             Сверстано полос: <span>{pMakeUp + pDelegated}</span>
           </p>
           <p className="header__info">
-            Осталось сверстать:{" "}
+            Осталось сверстать:
             <span>{pQuantity - (pMakeUp + pDelegated)}</span>
           </p>
         </header>
@@ -40,7 +38,6 @@ class MainBlock extends Component {
           <section className="page-section">
             <h1 className="visually-hidden"> Раскладка полос </h1>
             <div className="page-grid-container">
-              {" "}
               {this.renderPagePairList(getPageQuantity())}
             </div>
           </section>
@@ -75,7 +72,7 @@ class MainBlock extends Component {
               <label htmlFor="32">32 полос</label>
             </li>
           </ul>
-          <button>Создать раскладку</button>
+          <button onClick={this.handleNewPagesField}>Создать раскладку</button>
         </section>
       </React.Fragment>
     );
@@ -101,6 +98,8 @@ class MainBlock extends Component {
 
     return elList;
   };
+
+  handleNewPagesField = () => {};
 
   handleOnClickMakeUp = pagePairNumber => posLR => ev => {
     const pagePairNumStr = toTwo(pagePairNumber);

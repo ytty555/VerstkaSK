@@ -168,5 +168,6 @@ export const generateStateArray = pageQuantity => {
       resArr[keyObj] = currPair;
     }
   })();
+  resArr.pagesQuantity = pageQuantity;
   return resArr;
 };
