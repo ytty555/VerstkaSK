@@ -98,9 +98,6 @@ export const isColorPage = (pageQuantity, pageNum) =>
 // Переводит число в струку из двух символов
 export const toTwo = num => (num < 10 ? "0" + String(num) : String(num));
 
-// Возвращает количество полос в номере
-export const getPageQuantity = () => 28;
-
 // Возвращает номера полос разворота в виде массива номеров полос (левая и правая)
 // Массив из номеров полос: левая полоса и правая
 export const numForPair = (pageQuantity, pairNumber) => {
@@ -121,6 +118,7 @@ export const getPageInfo = currState => {
   let pagesDelegated = 0;
   let pagesMakeUp = 0;
   let pagesPhoto = 0;
+  let pagesQuantity = currState.pagesQuantity;
   let res = {};
 
   for (let pair in currState) {
@@ -133,7 +131,7 @@ export const getPageInfo = currState => {
     }
   }
 
-  res.pagesQuantity = getPageQuantity();
+  res.pagesQuantity = pagesQuantity;
   res.pagesDelegated = pagesDelegated;
   res.pagesMakeUp = pagesMakeUp;
   res.pagesPhoto = pagesPhoto;
@@ -143,7 +141,11 @@ export const getPageInfo = currState => {
 
 // Первичное заполнение состояния
 export const generateStateArray = pageQuantity => {
+  if (!pageQuantity) {
+    return {};
+  }
   const pairs = pageQuantity / 2;
+  console.log("pairs", pairs);
   let resArr = {};
   (() => {
     for (let i = 1; i <= pairs; i++) {

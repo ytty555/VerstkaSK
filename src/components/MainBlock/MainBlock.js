@@ -1,17 +1,25 @@
 import React, { Component } from "react";
 import PagesBlock from "./PagesBlock";
-import {
-  toTwo,
-  getPageQuantity,
-  getPageInfo,
-  generateStateArray
-} from "./proglogic";
+import { getPageInfo } from "./proglogic";
 
 class MainBlock extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      pagesQuantity: 0
+    };
+  }
 
-    this.state = generateStateArray(getPageQuantity());
+  pBlock = (pagesQuantity) => {
+    if (pagesQuantity) {
+      return (
+         <PagesBlock pagesQuantity={this.state.pagesQuantity} />
+      )
+    } else {
+      return (
+        <div></div>
+      )
+    }
   }
 
   render() {
@@ -34,12 +42,8 @@ class MainBlock extends Component {
             <span>{pQuantity - (pMakeUp + pDelegated)}</span>
           </p>
         </header>
-        <PagesBlock 
-          state={this.state}
-          handleOnClickMakeUp={this.handleOnClickMakeUp}
-          handleOnClickPhoto={this.handleOnClickPhoto}
-          handleOnClickDelegated={this.handleOnClickDelegated}
-        />
+        {/* <PagesBlock pagesQuantity={this.state.pagesQuantity} /> */}
+        {this.pBlock(this.state.pagesQuantity)}
         <section className="control-panel">
           <ul>
             <li className="choose-pages">
@@ -76,56 +80,18 @@ class MainBlock extends Component {
     );
   }
 
-  
+  handleNewPagesField = () => {
+    const radio = document.getElementsByClassName('choose-pages__radio');
+    let res = null;
 
-  handleNewPagesField = () => {};
+    for (let i = 0; i < radio.length; i++) {
+      if (radio[i].checked) {
+        res = parseInt(radio[i].id);
+      }
+    }
 
-
- handleOnClickMakeUp = pagePairNumber => posLR => ev => {
-    const pagePairNumStr = toTwo(pagePairNumber);
-    const state = this.state[pagePairNumStr];
-    const stateTmp = Object.assign({}, state);
-    stateTmp[posLR].pageMakeup = !state[posLR].pageMakeup;
-    stateTmp[posLR].pageDelegated =
-      stateTmp[posLR].pageDelegated && stateTmp[posLR].pageMakeup
-        ? false
-        : stateTmp[posLR].pageDelegated;
-    stateTmp[posLR].pagePhoto = !stateTmp[posLR].pageMakeup
-      ? false
-      : stateTmp[posLR].pagePhoto;
-    this.setState({
-      [state]: stateTmp
-    });
+    this.setState({pagesQuantity: res});
   };
-
-  handleOnClickPhoto = pagePairNumber => posLR => ev => {
-    const pagePairNumStr = toTwo(pagePairNumber);
-    const state = this.state[pagePairNumStr];
-    const stateTmp = Object.assign({}, state);
-    if (!stateTmp[posLR].pageMakeup) return;
-    stateTmp[posLR].pagePhoto = !state[posLR].pagePhoto;
-    this.setState({
-      [state]: stateTmp
-    });
-  };
-
-  handleOnClickDelegated = pagePairNumber => posLR => ev => {
-    const pagePairNumStr = toTwo(pagePairNumber);
-    const state = this.state[pagePairNumStr];
-    const stateTmp = Object.assign({}, state);
-    stateTmp[posLR].pageDelegated = !state[posLR].pageDelegated;
-    stateTmp[posLR].pageMakeup =
-      stateTmp[posLR].pageMakeup && stateTmp[posLR].pageDelegated
-        ? false
-        : stateTmp[posLR].pageMakeup;
-    stateTmp[posLR].pagePhoto = !stateTmp[posLR].pageMakeup
-      ? false
-      : stateTmp[posLR].pagePhoto;
-    this.setState({
-      [state]: stateTmp
-    });
-  };
-  
 }
 
 export default MainBlock;
