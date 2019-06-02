@@ -145,7 +145,6 @@ export const generateStateArray = pageQuantity => {
     return {};
   }
   const pairs = pageQuantity / 2;
-  console.log("pairs", pairs);
   let resArr = {};
   (() => {
     for (let i = 1; i <= pairs; i++) {

@@ -2,19 +2,27 @@ import React, { Component } from "react";
 import PagePair from "./PagePair";
 import { toTwo, generateStateArray } from "./proglogic";
 
+
 export default class PagesBlock extends Component {
   constructor(props) {
     super(props);
     this.state = generateStateArray(this.props.pagesQuantity);
-    console.log('curr state', this.state)
+  }
+
+  resetState = () => {
+    this.setState(generateStateArray(this.props.pagesQuantity));
   }
 
   pBlock = pagesQuantity => {
     if (pagesQuantity) {
+      // this.state = generateStateArray(this.props.pagesQuantity);
+      this.resetState();
       return (
         <React.Fragment>
           <h1 className="visually-hidden"> Раскладка полос </h1>
-          <div className="page-grid-container">{this.renderPagePairList()}</div>
+          <div className="page-grid-container">
+            {this.renderPagePairList(this.props.pagesQuantity)}
+          </div>
         </React.Fragment>
       );
     } else {
@@ -38,12 +46,10 @@ export default class PagesBlock extends Component {
     );
   }
 
-  renderPagePairList = () => {
-    const pageQuantity = this.props.pagesQuantity;
+  renderPagePairList = pagesQuantity => {
     let elList = [];
     let el = null;
-    for (let i = 1; i <= pageQuantity / 2; i++) {
-      console.log(this.state);
+    for (let i = 1; i <= pagesQuantity / 2; i++) {
       el = (
         <PagePair
           key={toTwo(i)}

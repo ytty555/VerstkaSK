@@ -6,21 +6,11 @@ class MainBlock extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pagesQuantity: 0
+      pagesQuantity: 32
     };
   }
 
-  pBlock = (pagesQuantity) => {
-    if (pagesQuantity) {
-      return (
-         <PagesBlock pagesQuantity={this.state.pagesQuantity} />
-      )
-    } else {
-      return (
-        <div></div>
-      )
-    }
-  }
+
 
   render() {
     const info = getPageInfo(this.state);
@@ -42,8 +32,8 @@ class MainBlock extends Component {
             <span>{pQuantity - (pMakeUp + pDelegated)}</span>
           </p>
         </header>
-        {/* <PagesBlock pagesQuantity={this.state.pagesQuantity} /> */}
-        {this.pBlock(this.state.pagesQuantity)}
+        <PagesBlock pagesQuantity={this.getPagesQuantity(this.state)} />
+        {/* <PagesBlock pagesQuantity={28} /> */}
         <section className="control-panel">
           <ul>
             <li className="choose-pages">
@@ -80,6 +70,10 @@ class MainBlock extends Component {
     );
   }
 
+  getPagesQuantity = (state) => {
+    return parseInt(state.pagesQuantity);
+  }
+
   handleNewPagesField = () => {
     const radio = document.getElementsByClassName('choose-pages__radio');
     let res = null;
@@ -89,8 +83,7 @@ class MainBlock extends Component {
         res = parseInt(radio[i].id);
       }
     }
-
-    this.setState({pagesQuantity: res});
+    this.setState({pagesQuantity: res});  
   };
 }
 
