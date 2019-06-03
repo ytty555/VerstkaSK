@@ -6,7 +6,7 @@ class MainBlock extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pagesQuantity: 32
+      pagesQuantity: 24
     };
   }
 
@@ -83,7 +83,7 @@ class MainBlock extends Component {
         res = parseInt(radio[i].id);
       }
     }
-    this.setState({pagesQuantity: res});  
+    this.setState({ pagesQuantity: res });
   };
 }
 

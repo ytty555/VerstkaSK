@@ -10,7 +10,7 @@ export default class PagesBlock extends Component {
   }
 
   resetState = () => {
-    this.setState(generateStateArray(this.props.pagesQuantity));
+    this.setState((state, props) => { });
   }
 
   pBlock = pagesQuantity => {
