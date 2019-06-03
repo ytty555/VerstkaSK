@@ -1,22 +1,22 @@
 import React, { Component } from "react";
 import PagePair from "./PagePair";
-import { toTwo, generateStateArray } from "./proglogic";
+import { toTwo, getPagesState } from "./proglogic";
 
 
 export default class PagesBlock extends Component {
   constructor(props) {
     super(props);
-    this.state = generateStateArray(this.props.pagesQuantity);
+    this.state = getPagesState(this.props.pagesQuantity);
   }
 
   resetState = () => {
-    this.setState((state, props) => { });
+    const { pagesQuantity } = this.props;
+    this.setState((state, props) => getPagesState(pagesQuantity));
   }
 
   pBlock = pagesQuantity => {
     if (pagesQuantity) {
       // this.state = generateStateArray(this.props.pagesQuantity);
-      this.resetState();
       return (
         <React.Fragment>
           <h1 className="visually-hidden"> Раскладка полос </h1>

@@ -140,35 +140,34 @@ export const getPageInfo = currState => {
 };
 
 // Первичное заполнение состояния
-export const generateStateArray = pageQuantity => {
-  if (!pageQuantity) {
+export const getPagesState = (pagesQuantity) => {
+  if (!pagesQuantity) {
     return {};
   }
-  const pairs = pageQuantity / 2;
-  let resArr = {};
+  const pairs = pagesQuantity / 2;
+  let resObj = {};
   (() => {
     for (let i = 1; i <= pairs; i++) {
       const keyObj = toTwo(i);
-      const numPair = numForPair(pageQuantity, i);
+      const numPair = numForPair(pagesQuantity, i);
       const currPair = {
         left: {
           pageId: numPair[0],
-          pageColor: isColorPage(pageQuantity, numPair[0]),
+          pageColor: isColorPage(pagesQuantity, numPair[0]),
           pageMakeup: false,
           pagePhoto: false,
           pageDelegated: false
         },
         right: {
           pageId: numPair[1],
-          pageColor: isColorPage(pageQuantity, numPair[1]),
+          pageColor: isColorPage(pagesQuantity, numPair[1]),
           pageMakeup: false,
           pagePhoto: false,
           pageDelegated: false
         }
       };
-      resArr[keyObj] = currPair;
+      resObj[keyObj] = currPair;
     }
   })();
-  resArr.pagesQuantity = pageQuantity;
-  return resArr;
+  return resObj;
 };
