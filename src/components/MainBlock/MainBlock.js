@@ -40,36 +40,41 @@ class MainBlock extends Component {
         />
         {/* <PagesBlock pagesQuantity={28} /> */}
         <section className="control-panel">
-          <ul>
-            <li className="choose-pages">
-              <input
-                name="pages"
-                type="radio"
-                className="choose-pages__radio"
-                id="24"
-              />
-              <label htmlFor="24">24 полос</label>
-            </li>
-            <li className="choose-pages">
-              <input
-                name="pages"
-                type="radio"
-                className="choose-pages__radio"
-                id="28"
-              />
-              <label htmlFor="28">28 полос</label>
-            </li>
-            <li className="choose-pages">
-              <input
-                name="pages"
-                type="radio"
-                className="choose-pages__radio"
-                id="32"
-              />
-              <label htmlFor="32">32 полос</label>
-            </li>
-          </ul>
-          <button onClick={this.handleNewPagesField}>Создать раскладку</button>
+          <fieldset className="choose-pages-fieldset">
+            <legend>Количество полос</legend>
+            <ul>
+              <li className="choose-pages">
+                <input
+                  name="pages"
+                  type="radio"
+                  className="choose-pages__radio"
+                  id="24"
+                />
+                <label htmlFor="24">24 полосы</label>
+              </li>
+              <li className="choose-pages">
+                <input
+                  name="pages"
+                  type="radio"
+                  className="choose-pages__radio"
+                  id="28"
+                />
+                <label htmlFor="28">28 полос</label>
+              </li>
+              <li className="choose-pages">
+                <input
+                  name="pages"
+                  type="radio"
+                  className="choose-pages__radio"
+                  id="32"
+                />
+                <label htmlFor="32">32 полосы</label>
+              </li>
+            </ul>
+            <button onClick={this.handleNewPagesField}>
+              Создать раскладку
+            </button>
+          </fieldset>
         </section>
       </React.Fragment>
     );
