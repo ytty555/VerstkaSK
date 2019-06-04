@@ -6,7 +6,8 @@ class MainBlock extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pagesState: getPagesState(0)
+      pagesState: getPagesState(0),
+      pagesQuantity: 0,
     };
   }
 
