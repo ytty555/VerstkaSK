@@ -7,13 +7,13 @@ class MainBlock extends Component {
     super(props);
     this.state = {
       pagesState: getPagesState(0),
-      pagesQuantity: 0,
+      pagesQuantity: 0
     };
   }
 
   render() {
-    const info = getPageInfo(this.state);
-    const pQuantity = info.pagesQuantity;
+    const info = getPageInfo(this.state.pagesQuantity, this.state.pagesState);
+    const pQuantity = this.state.pagesQuantity;
     const pMakeUp = info.pagesMakeUp;
     const pDelegated = info.pagesDelegated;
 
@@ -96,7 +96,7 @@ class MainBlock extends Component {
 
   handleOnClickMakeUp = pagePairNumber => posLR => ev => {
     const pagePairNumStr = toTwo(pagePairNumber);
-    const state = this.state[pagePairNumStr];
+    const state = this.state.pagesState[pagePairNumStr];
     const stateTmp = Object.assign({}, state);
     stateTmp[posLR].pageMakeup = !state[posLR].pageMakeup;
     stateTmp[posLR].pageDelegated =
@@ -113,7 +113,7 @@ class MainBlock extends Component {
 
   handleOnClickPhoto = pagePairNumber => posLR => ev => {
     const pagePairNumStr = toTwo(pagePairNumber);
-    const state = this.state[pagePairNumStr];
+    const state = this.state.pagesState[pagePairNumStr];
     const stateTmp = Object.assign({}, state);
     if (!stateTmp[posLR].pageMakeup) return;
     stateTmp[posLR].pagePhoto = !state[posLR].pagePhoto;
@@ -124,7 +124,7 @@ class MainBlock extends Component {
 
   handleOnClickDelegated = pagePairNumber => posLR => ev => {
     const pagePairNumStr = toTwo(pagePairNumber);
-    const state = this.state[pagePairNumStr];
+    const state = this.state.pagesState[pagePairNumStr];
     const stateTmp = Object.assign({}, state);
     stateTmp[posLR].pageDelegated = !state[posLR].pageDelegated;
     stateTmp[posLR].pageMakeup =

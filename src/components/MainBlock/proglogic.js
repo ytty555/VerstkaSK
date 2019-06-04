@@ -114,11 +114,10 @@ export const numForPair = (pageQuantity, pairNumber) => {
 };
 
 // Возвращает сводную информацию по полосам из state
-export const getPageInfo = currState => {
+export const getPageInfo = (pagesQuantity, currState) => {
   let pagesDelegated = 0;
   let pagesMakeUp = 0;
   let pagesPhoto = 0;
-  let pagesQuantity = currState.pagesQuantity;
   let res = {};
 
   if (!pagesQuantity) {
