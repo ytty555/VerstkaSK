@@ -2,16 +2,10 @@ import React, { Component } from "react";
 import PagePair from "./PagePair";
 import { toTwo, getPagesState } from "./proglogic";
 
-
 export default class PagesBlock extends Component {
   constructor(props) {
     super(props);
     this.state = getPagesState(this.props.pagesQuantity);
-  }
-
-  resetState = () => {
-    const { pagesQuantity } = this.props;
-    this.setState((state, props) => getPagesState(pagesQuantity));
   }
 
   pBlock = pagesQuantity => {
