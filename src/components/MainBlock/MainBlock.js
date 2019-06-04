@@ -1,16 +1,14 @@
 import React, { Component } from "react";
 import PagesBlock from "./PagesBlock";
-import { getPageInfo } from "./proglogic";
+import { toTwo, getPageInfo, getPagesState } from "./proglogic";
 
 class MainBlock extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pagesQuantity: 24
+      pagesState: getPagesState(0)
     };
   }
-
-
 
   render() {
     const info = getPageInfo(this.state);
@@ -32,7 +30,13 @@ class MainBlock extends Component {
             <span>{pQuantity - (pMakeUp + pDelegated)}</span>
           </p>
         </header>
-        <PagesBlock pagesQuantity={this.getPagesQuantity(this.state)} />
+        <PagesBlock
+          pagesQuantity={this.getPagesQuantity(this.state)}
+          pagesState={this.state.pagesState}
+          handleOnClickMakeUp={this.handleOnClickMakeUp}
+          handleOnClickPhoto={this.handleOnClickPhoto}
+          handleOnClickDelegated={this.handleOnClickDelegated}
+        />
         {/* <PagesBlock pagesQuantity={28} /> */}
         <section className="control-panel">
           <ul>
@@ -70,12 +74,12 @@ class MainBlock extends Component {
     );
   }
 
-  getPagesQuantity = (state) => {
+  getPagesQuantity = state => {
     return parseInt(state.pagesQuantity);
-  }
+  };
 
   handleNewPagesField = () => {
-    const radio = document.getElementsByClassName('choose-pages__radio');
+    const radio = document.getElementsByClassName("choose-pages__radio");
     let res = null;
 
     for (let i = 0; i < radio.length; i++) {
@@ -83,7 +87,55 @@ class MainBlock extends Component {
         res = parseInt(radio[i].id);
       }
     }
-    this.setState({ pagesQuantity: res });
+    this.setState({
+      pagesState: getPagesState(res),
+      pagesQuantity: res
+    });
+  };
+
+  handleOnClickMakeUp = pagePairNumber => posLR => ev => {
+    const pagePairNumStr = toTwo(pagePairNumber);
+    const state = this.state[pagePairNumStr];
+    const stateTmp = Object.assign({}, state);
+    stateTmp[posLR].pageMakeup = !state[posLR].pageMakeup;
+    stateTmp[posLR].pageDelegated =
+      stateTmp[posLR].pageDelegated && stateTmp[posLR].pageMakeup
+        ? false
+        : stateTmp[posLR].pageDelegated;
+    stateTmp[posLR].pagePhoto = !stateTmp[posLR].pageMakeup
+      ? false
+      : stateTmp[posLR].pagePhoto;
+    this.setState({
+      [state]: stateTmp
+    });
+  };
+
+  handleOnClickPhoto = pagePairNumber => posLR => ev => {
+    const pagePairNumStr = toTwo(pagePairNumber);
+    const state = this.state[pagePairNumStr];
+    const stateTmp = Object.assign({}, state);
+    if (!stateTmp[posLR].pageMakeup) return;
+    stateTmp[posLR].pagePhoto = !state[posLR].pagePhoto;
+    this.setState({
+      [state]: stateTmp
+    });
+  };
+
+  handleOnClickDelegated = pagePairNumber => posLR => ev => {
+    const pagePairNumStr = toTwo(pagePairNumber);
+    const state = this.state[pagePairNumStr];
+    const stateTmp = Object.assign({}, state);
+    stateTmp[posLR].pageDelegated = !state[posLR].pageDelegated;
+    stateTmp[posLR].pageMakeup =
+      stateTmp[posLR].pageMakeup && stateTmp[posLR].pageDelegated
+        ? false
+        : stateTmp[posLR].pageMakeup;
+    stateTmp[posLR].pagePhoto = !stateTmp[posLR].pageMakeup
+      ? false
+      : stateTmp[posLR].pagePhoto;
+    this.setState({
+      [state]: stateTmp
+    });
   };
 }
 

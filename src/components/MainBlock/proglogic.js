@@ -140,7 +140,7 @@ export const getPageInfo = currState => {
 };
 
 // Первичное заполнение состояния
-export const getPagesState = (pagesQuantity) => {
+export const getPagesState = pagesQuantity => {
   if (!pagesQuantity) {
     return {};
   }
@@ -169,5 +169,5 @@ export const getPagesState = (pagesQuantity) => {
       resObj[keyObj] = currPair;
     }
   })();
-  return resObj;
+  return Object.assign({}, resObj);
 };
