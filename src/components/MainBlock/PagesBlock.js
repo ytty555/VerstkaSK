@@ -36,7 +36,7 @@ function PagesBlock(props) {
     } else {
       return (
         <React.Fragment>
-          <h1> Раскладка полос не сформирована </h1>
+          <h1 className="pageBlock-Alert"> Раскладка полос не сформирована </h1>
         </React.Fragment>
       );
     }

@@ -84,7 +84,7 @@ class MainBlock extends Component {
                 <label htmlFor="32" className="choose-pages__lable"><span>32</span> полосы</label>
               </li>
             </ul>
-            <button onClick={this.handleNewPagesField}>
+            <button onClick={this.handleNewPagesField} className="choose-pages__button">
               Создать раскладку
             </button>
           </fieldset>
