@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Учет полос</title>
+</head>
+
+<body>
+    <header class="header-main"></header>
+
+    <section class="control-panel"></section>
+
+    <main class="main-block">
+        <section class="page-section">
+            <h1 class="visually-hidden">Раскладка полос</h1>
+            <div id="pages-container" class="page-grid-container">
+                <!-- Разворот полос -->
+                <div class="page-pair">
+                    <img class="page-pair-background" width="162px" height="112px" src="img/pair.svg" alt="Изображение разворота полос">
+                    <!-- Левая страница -->
+                    <div class="page page_pos_left page_color page_delegated page_make-up page_photo">
+                        <div class="page__el-background"></div>
+                        <div class="page__el-color"></div>
+                        <div class="page__el-number">24</div>
+                        <button type="button" class="page__el-make-up"></button>
+                        <button type="button" class="page__el-photo"></button>
+                        <button type="button" class="page__el-delegated"></button>
+                    </div>
+                    <!-- Конец левой страницы -->
+                    
+                    <!-- Правая страница -->
+                    <div class="page page_pos_right page_delegated page_make-up page_photo">
+                        <div class="page__el-number">01</div>
+                        <div class="page__el-color"></div>
+                        <button type="button" class="page__el-make-up"></button>
+                        <button type="button" class="page__el-photo"></button>
+                        <button type="button" class="page__el-delegated"></button>
+                        <div class="page__el-background"></div>
+                    </div>
+                    <!-- Конец правой страницы -->
+                </div>
+                <!-- Конец разворота полос -->
+
+
+            </div>
+            <!-- Конец page-grid-wrap -->
+        </section>
+    </main>
+
+    <footer class="footer-main">
+        <p class="app-version">v2.0.1.</p>
+    </footer>
+
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    
+    <script src="js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,189 @@
+.page-section
+    display: flex
+    justify-content: center
+    margin-top: 50px
+
+.page-grid-container
+    display: grid
+    grid-template-columns: 180px 180px 180px 180px
+    grid-template-rows: 120px 120px 120px
+    grid-auto-flow: column
+    grid-gap: 30px
+
+.page-pair
+    position: relative
+    align-self: center
+    width: 162px
+    height: 112px
+   
+.page__el-make-up,
+.page__el-photo_left,
+.page__el-photo_right,
+.page__el-delegated,
+.page__el-number
+    opacity: 1
+    font-family: 'D-DIN Bold'
+    font-size: 23px
+    color: $grey-border
+    position: absolute
+    padding: 0
+    border: none
+    background-color: transparent
+    background-repeat: no-repeat
+    background-size: contain
+    cursor: pointer
+    display: inline-block
+    text-align: center
+    text-decoration: none
+    z-index: 1
+.page__el-number
+    cursor: default
+        
+.page__el-make-up
+    height: 17px
+    width: 17px
+    background-image: url('../img/v-0.svg')
+.page_make-up .page__el-make-up 
+    background-image: url('../img/v-1.svg')
+
+
+.page__el-delegated
+    height: 28px
+    width: 28px
+    background-image: url('../img/delegeted-0.svg')
+.page_delegated .page__el-delegated
+    background-image: url('../img/delegeted-1.svg')
+
+
+.page__el-color
+    opacity: 0.5
+    position: absolute
+    left: 0
+    top: 0
+    height: 17px
+    width: 17px
+    background-color: transparent
+    background-repeat: no-repeat
+    background-size: contain
+    background-image: url('../img/cmyk-0.svg')
+
+.page_color
+    .page__el-color
+        background-image: url('../img/cmyk-1.svg')
+
+.page_pos_left
+    & .page__el-number
+        left: 32px
+        top: 3px
+    & .page__el-make-up
+        left: 6px
+        top: 81px
+    & .page__el-color
+        left: 6px
+        top: 6px
+    & .page__el-delegated
+        left: 42px 
+        top: 83px
+
+.page_pos_right
+    & .page__el-number
+        left: 110px
+        top: 3px
+    & .page__el-make-up
+        left: 139px
+        top: 81px
+    & .page__el-color
+        left: 139px
+        top: 6px
+    & .page__el-delegated
+        left: 92px 
+        top: 83px
+
+.page__el-photo_left
+    left: 13px
+    top: 33px
+    height: 38px
+    width: 55px
+    background-image: url('../img/photo-left-0.svg')
+.page_photo .page__el-photo_left
+    background-image: url('../img/photo-left-1.svg')
+
+.page__el-photo_right
+    left: 93px
+    top: 33px
+    height: 38px
+    width: 55px
+    background-image: url('../img/photo-right-0.svg')
+.page_photo .page__el-photo_right
+    background-image: url('../img/photo-right-1.svg')
+
+.page__el-make-up:hover
+    opacity: 0.7
+    background-image: url('../img/v-2.svg')
+.page__el-make-up:focus
+    outline: none
+
+.page__el-photo_left:hover
+    opacity: 0.7
+    background-image: url('../img/photo-left-2.svg')
+.page__el-photo_left:focus
+    outline: none
+
+.page__el-photo_right:hover
+    opacity: 0.7
+    background-image: url('../img/photo-right-2.svg')
+.page__el-photo_right:focus
+    outline: none
+
+.page__el-delegated:hover
+    opacity: 0.7
+    background-image: url('../img/delegeted-2.svg')
+.page__el-delegated:focus
+    outline: none
+
+.page__el-background_left,
+.page__el-background_right
+    position: absolute
+    margin: 0
+    z-index: 0
+
+.page__el-background_left
+    left: 6px 
+    top: 5px
+    height: 96px
+    width: 70px
+    background-image: url('../img/page-fon-left-0.svg')
+
+
+.page__el-background_right
+    left: 86px 
+    top: 5px
+    height: 96px
+    width: 70px
+    background-image: url('../img/page-fon-right-0.svg')
+
+.page_make-up 
+    & .page__el-background_right
+        background-image: url('../img/page-fon-right-1.svg')
+    & .page__el-background_left
+        background-image: url('../img/page-fon-left-1.svg')
+    & .page__el-number
+        color: $main-blue
+    & .page__el-color
+        opacity: 1
+
+.page_delegated
+    & .page__el-background_right
+        background-image: url('../img/page-fon-right-2.svg')
+    & .page__el-background_left
+        background-image: url('../img/page-fon-left-2.svg')
+    & .page__el-number
+        color: $main-blue
+    & .page__el-color
+        opacity: 1
+    & .page__el-photo_left
+        background-image: url('../img/photo-left-1.svg')
+    & .page__el-photo_right
+        background-image: url('../img/photo-right-1.svg')
+
+
