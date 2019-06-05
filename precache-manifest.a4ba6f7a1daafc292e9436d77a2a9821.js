@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e91b045bc46b3bcad1bc23911b571634",
+    "revision": "70797cdbbcff571a09c8f9346ad050f6",
     "url": "/VerstkaSK/index.html"
   },
   {
-    "revision": "468668fcd5bb6ca84291",
-    "url": "/VerstkaSK/static/css/main.57bba186.chunk.css"
+    "revision": "9f9ef263dfb45557376b",
+    "url": "/VerstkaSK/static/css/main.2c67856f.chunk.css"
   },
   {
     "revision": "774d5e3722e17f42d013",
     "url": "/VerstkaSK/static/js/2.cba05053.chunk.js"
   },
   {
-    "revision": "468668fcd5bb6ca84291",
-    "url": "/VerstkaSK/static/js/main.640107ef.chunk.js"
+    "revision": "9f9ef263dfb45557376b",
+    "url": "/VerstkaSK/static/js/main.a0b75ee7.chunk.js"
   },
   {
     "revision": "9042521bad4b9fafaa30",
@@ -44,6 +44,18 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/VerstkaSK/static/media/RistrettoSlabPro-Bold.ccb7d89d.woff2"
   },
   {
+    "revision": "4312f1fbdcf4d54af4506dabdce08010",
+    "url": "/VerstkaSK/static/media/Roboto-Regular.4312f1fb.ttf"
+  },
+  {
+    "revision": "94dac78eee406a8c8f0406b69b85ac2b",
+    "url": "/VerstkaSK/static/media/Roboto-Regular.94dac78e.woff"
+  },
+  {
+    "revision": "b9077621ce786b55c176a61456bfc077",
+    "url": "/VerstkaSK/static/media/Roboto-Regular.b9077621.eot"
+  },
+  {
     "revision": "ae722853a414514f7c7657b087c50e91",
     "url": "/VerstkaSK/static/media/cmyk-0.ae722853.svg"
   },
@@ -68,24 +80,24 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/VerstkaSK/static/media/page-fon-left-0.2303b26f.svg"
   },
   {
-    "revision": "d766d2d214ebc5a8eaca09ff52a051ac",
-    "url": "/VerstkaSK/static/media/page-fon-left-1.d766d2d2.svg"
+    "revision": "385b25b52d29e8fdac705b2e1f1605e7",
+    "url": "/VerstkaSK/static/media/page-fon-left-1.385b25b5.svg"
   },
   {
-    "revision": "021e38e4b3551948095cb6b0c0da7acc",
-    "url": "/VerstkaSK/static/media/page-fon-left-2.021e38e4.svg"
+    "revision": "5bfcd02da0fcc830258e949b13989457",
+    "url": "/VerstkaSK/static/media/page-fon-left-2.5bfcd02d.svg"
   },
   {
     "revision": "ed32c8f8e3369eed18ef7f9ffac1e60c",
     "url": "/VerstkaSK/static/media/page-fon-right-0.ed32c8f8.svg"
   },
   {
-    "revision": "0d12935706896dff4a144287ec78d3e6",
-    "url": "/VerstkaSK/static/media/page-fon-right-1.0d129357.svg"
+    "revision": "ac8b31ba7dfdc7795fcf195bfc606991",
+    "url": "/VerstkaSK/static/media/page-fon-right-1.ac8b31ba.svg"
   },
   {
-    "revision": "15603fc8b89325a2ed3e61a6fb36c2e8",
-    "url": "/VerstkaSK/static/media/page-fon-right-2.15603fc8.svg"
+    "revision": "cee89f608139e40389b7fc54d4b878ec",
+    "url": "/VerstkaSK/static/media/page-fon-right-2.cee89f60.svg"
   },
   {
     "revision": "cfcc89093fb715a16a65a3364a8c33b3",
