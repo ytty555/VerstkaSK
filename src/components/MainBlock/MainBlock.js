@@ -2,14 +2,30 @@ import React, { Component } from "react";
 import PagesBlock from "./PagesBlock";
 import { toTwo, getPageInfo, getPagesState } from "./proglogic";
 
+const nameStorage = "AllState";
+
 class MainBlock extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      pagesState: getPagesState(0),
-      pagesQuantity: 0
-    };
+    this.state = this.initialStateFromStorage(nameStorage)
   }
+
+  initialStateFromStorage = nameStorage => {
+    if (localStorage.getItem(nameStorage) !== null) {
+      return JSON.parse(localStorage.getItem(nameStorage));
+    } else {
+      return {
+        pagesState: getPagesState(0),
+        pagesQuantity: 0,
+      };
+    }
+  }
+
+  setStateToStorage = nameStorage => {
+    localStorage.setItem(nameStorage, JSON.stringify(this.state));
+  }
+
+
 
   render() {
     const info = getPageInfo(this.state.pagesQuantity, this.state.pagesState);
@@ -86,7 +102,7 @@ class MainBlock extends Component {
 
   handleNewPagesField = () => {
     const radio = document.getElementsByClassName("choose-pages__radio");
-    let res = null;
+    let res = 0;
 
     for (let i = 0; i < radio.length; i++) {
       if (radio[i].checked) {
@@ -97,6 +113,8 @@ class MainBlock extends Component {
       pagesState: getPagesState(res),
       pagesQuantity: res
     });
+
+    this.setStateToStorage(nameStorage);
   };
 
   handleOnClickMakeUp = pagePairNumber => posLR => ev => {
@@ -114,6 +132,7 @@ class MainBlock extends Component {
     this.setState({
       [state]: stateTmp
     });
+    this.setStateToStorage(nameStorage);
   };
 
   handleOnClickPhoto = pagePairNumber => posLR => ev => {
@@ -125,6 +144,7 @@ class MainBlock extends Component {
     this.setState({
       [state]: stateTmp
     });
+    this.setStateToStorage(nameStorage);
   };
 
   handleOnClickDelegated = pagePairNumber => posLR => ev => {
@@ -142,6 +162,7 @@ class MainBlock extends Component {
     this.setState({
       [state]: stateTmp
     });
+    this.setStateToStorage(nameStorage);
   };
 }
 
