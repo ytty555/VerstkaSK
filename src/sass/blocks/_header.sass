@@ -1,17 +1,21 @@
 .header-main
-    background-color: $grey
+    background-color: $control-bg
     padding-top: 5px
     padding-left: 20px
 
 .header__info
     font-family: Geneva, Arial, Helvetica, sans-serif
-    font-weight: 700
+    // font-weight: 700
     margin: 0
+    color: $text-white
     // display: inline-block
     & span
-        color: red
+        font-weight: 700
+        font-size: 20px
+        color: $text-yellow
 
 .choose-pages
+    position: relative
     list-style: none
     font-family: Geneva, Arial, Helvetica, sans-serif
     font-size: 16px
@@ -22,3 +26,16 @@
     font-size: 14px
     border-radius: 5px
     margin: 10px
+
+.choose-pages__radio
+    position: relative
+    left: -37px
+    top: -12px
+
+.choose-pages__lable
+    position: relative
+    left: -32px
+    top: -14px
+    & span  
+        color: $text-yellow
+        // font-weight: 700

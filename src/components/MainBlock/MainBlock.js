@@ -25,8 +25,6 @@ class MainBlock extends Component {
     localStorage.setItem(nameStorage, JSON.stringify(this.state));
   }
 
-
-
   render() {
     const info = getPageInfo(this.state.pagesQuantity, this.state.pagesState);
     const pQuantity = this.state.pagesQuantity;
@@ -43,8 +41,7 @@ class MainBlock extends Component {
             Сверстано полос: <span>{pMakeUp + pDelegated}</span>
           </p>
           <p className="header__info">
-            Осталось сверстать:
-            <span>{pQuantity - (pMakeUp + pDelegated)}</span>
+            Осталось сверстать: <span>{pQuantity - (pMakeUp + pDelegated)}</span>
           </p>
         </header>
         <PagesBlock
@@ -66,7 +63,7 @@ class MainBlock extends Component {
                   className="choose-pages__radio"
                   id="24"
                 />
-                <label htmlFor="24">24 полосы</label>
+                <label htmlFor="24" className="choose-pages__lable"><span>24</span> полосы</label>
               </li>
               <li className="choose-pages">
                 <input
@@ -75,7 +72,7 @@ class MainBlock extends Component {
                   className="choose-pages__radio"
                   id="28"
                 />
-                <label htmlFor="28">28 полос</label>
+                <label htmlFor="28" className="choose-pages__lable"><span>28</span> полос</label>
               </li>
               <li className="choose-pages">
                 <input
@@ -84,7 +81,7 @@ class MainBlock extends Component {
                   className="choose-pages__radio"
                   id="32"
                 />
-                <label htmlFor="32">32 полосы</label>
+                <label htmlFor="32" className="choose-pages__lable"><span>32</span> полосы</label>
               </li>
             </ul>
             <button onClick={this.handleNewPagesField}>
