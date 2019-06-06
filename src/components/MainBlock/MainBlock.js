@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PagesBlock from "./PagesBlock";
+import ChoosePages from "./ChoosePages";
 import { toTwo, getPageInfo, getPagesState } from "./proglogic";
 
 const nameStorage = "AllState";
@@ -51,43 +52,10 @@ class MainBlock extends Component {
           handleOnClickPhoto={this.handleOnClickPhoto}
           handleOnClickDelegated={this.handleOnClickDelegated}
         />
-        {/* <PagesBlock pagesQuantity={28} /> */}
         <section className="control-panel">
-          <fieldset className="choose-pages-fieldset">
-            <legend>Количество полос</legend>
-            <ul>
-              <li className="choose-pages">
-                <input
-                  name="pages"
-                  type="radio"
-                  className="choose-pages__radio"
-                  id="24"
-                />
-                <label htmlFor="24" className="choose-pages__lable"><span>24</span> полосы</label>
-              </li>
-              <li className="choose-pages">
-                <input
-                  name="pages"
-                  type="radio"
-                  className="choose-pages__radio"
-                  id="28"
-                />
-                <label htmlFor="28" className="choose-pages__lable"><span>28</span> полос</label>
-              </li>
-              <li className="choose-pages">
-                <input
-                  name="pages"
-                  type="radio"
-                  className="choose-pages__radio"
-                  id="32"
-                />
-                <label htmlFor="32" className="choose-pages__lable"><span>32</span> полосы</label>
-              </li>
-            </ul>
-            <button onClick={this.handleNewPagesField} className="choose-pages__button">
-              Создать раскладку
-            </button>
-          </fieldset>
+          <ChoosePages
+            handleNewPagesField={this.handleNewPagesField}
+          />
         </section>
       </React.Fragment>
     );
