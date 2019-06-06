@@ -30,7 +30,7 @@ function CommonInfo(props) {
             <td className="control-text">
               Не сверстано:
               </td>
-            <td className="control-number">
+            <td className="control-number-attention">
               {pagesQuantity - (pagesMakeUp + pagesDelegated)}
             </td>
           </tr>
@@ -38,7 +38,7 @@ function CommonInfo(props) {
             <td className="control-text">
               Фото обработать:
               </td>
-            <td className="control-number">
+            <td className="control-number-attention">
               {pagesMakeUp - pagesPhoto}
             </td>
           </tr>

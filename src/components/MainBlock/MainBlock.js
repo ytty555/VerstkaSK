@@ -30,21 +30,12 @@ class MainBlock extends Component {
   render() {
     const info = getPageInfo(this.state.pagesQuantity, this.state.pagesState);
     const pQuantity = this.state.pagesQuantity;
-    const pMakeUp = info.pagesMakeUp;
-    const pDelegated = info.pagesDelegated;
-    const pReady = pMakeUp + pDelegated;
 
     return (
       <React.Fragment>
         <header className="header-main">
           <p className="header__info">
-            Всего полос в номере: <span>{pQuantity}</span>
-          </p>
-          <p className="header__info">
-            Сверстано полос: <span>{pReady}</span>
-          </p>
-          <p className="header__info">
-            Осталось сверстать: <span>{pQuantity - (pMakeUp + pDelegated)}</span>
+            Учет сверстанных полос
           </p>
         </header>
         <PagesBlock
