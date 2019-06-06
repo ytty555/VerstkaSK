@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PagesBlock from "./PagesBlock";
 import ChoosePages from "./ChoosePages";
+import CommonInfo from "./CommonInfo";
 import { toTwo, getPageInfo, getPagesState } from "./proglogic";
 
 const nameStorage = "AllState";
@@ -31,6 +32,7 @@ class MainBlock extends Component {
     const pQuantity = this.state.pagesQuantity;
     const pMakeUp = info.pagesMakeUp;
     const pDelegated = info.pagesDelegated;
+    const pReady = pMakeUp + pDelegated;
 
     return (
       <React.Fragment>
@@ -39,7 +41,7 @@ class MainBlock extends Component {
             Всего полос в номере: <span>{pQuantity}</span>
           </p>
           <p className="header__info">
-            Сверстано полос: <span>{pMakeUp + pDelegated}</span>
+            Сверстано полос: <span>{pReady}</span>
           </p>
           <p className="header__info">
             Осталось сверстать: <span>{pQuantity - (pMakeUp + pDelegated)}</span>
@@ -53,9 +55,8 @@ class MainBlock extends Component {
           handleOnClickDelegated={this.handleOnClickDelegated}
         />
         <section className="control-panel">
-          <ChoosePages
-            handleNewPagesField={this.handleNewPagesField}
-          />
+          <ChoosePages handleNewPagesField={this.handleNewPagesField} />
+          <CommonInfo pagesInfo={info} pagesQuantity={pQuantity} />
         </section>
       </React.Fragment>
     );
