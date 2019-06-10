@@ -1,11 +1,14 @@
 import React from "react";
 import ProgressBar from "./ProgressBar";
+import { getPercent } from "./proglogic";
 
 function CommonInfo(props) {
   const pagesMakeUp = props.pagesInfo.pagesMakeUp;
   const pagesDelegated = props.pagesInfo.pagesDelegated;
   const pagesPhoto = props.pagesInfo.pagesPhoto;
   const { pagesQuantity } = props;
+  const pagesMakeUpAll = pagesMakeUp + pagesDelegated;
+
   return (
     <React.Fragment>
       <fieldset className="common-info-fieldset">
@@ -44,7 +47,7 @@ function CommonInfo(props) {
             </td>
           </tr>
         </table>
-        <ProgressBar />
+        <ProgressBar percentMakeUp={getPercent(pagesMakeUpAll, pagesQuantity, 0)} />
       </fieldset>
     </React.Fragment>
   )
