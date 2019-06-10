@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import PagesBlock from "./PagesBlock";
+import ChoosePages from "./ChoosePages";
+import CommonInfo from "./CommonInfo";
 import { toTwo, getPageInfo, getPagesState } from "./proglogic";
 
 const nameStorage = "AllState";
@@ -28,20 +30,12 @@ class MainBlock extends Component {
   render() {
     const info = getPageInfo(this.state.pagesQuantity, this.state.pagesState);
     const pQuantity = this.state.pagesQuantity;
-    const pMakeUp = info.pagesMakeUp;
-    const pDelegated = info.pagesDelegated;
 
     return (
       <React.Fragment>
         <header className="header-main">
           <p className="header__info">
-            Всего полос в номере: <span>{pQuantity}</span>
-          </p>
-          <p className="header__info">
-            Сверстано полос: <span>{pMakeUp + pDelegated}</span>
-          </p>
-          <p className="header__info">
-            Осталось сверстать: <span>{pQuantity - (pMakeUp + pDelegated)}</span>
+            Учет сверстанных полос
           </p>
         </header>
         <PagesBlock
@@ -51,43 +45,9 @@ class MainBlock extends Component {
           handleOnClickPhoto={this.handleOnClickPhoto}
           handleOnClickDelegated={this.handleOnClickDelegated}
         />
-        {/* <PagesBlock pagesQuantity={28} /> */}
         <section className="control-panel">
-          <fieldset className="choose-pages-fieldset">
-            <legend>Количество полос</legend>
-            <ul>
-              <li className="choose-pages">
-                <input
-                  name="pages"
-                  type="radio"
-                  className="choose-pages__radio"
-                  id="24"
-                />
-                <label htmlFor="24" className="choose-pages__lable"><span>24</span> полосы</label>
-              </li>
-              <li className="choose-pages">
-                <input
-                  name="pages"
-                  type="radio"
-                  className="choose-pages__radio"
-                  id="28"
-                />
-                <label htmlFor="28" className="choose-pages__lable"><span>28</span> полос</label>
-              </li>
-              <li className="choose-pages">
-                <input
-                  name="pages"
-                  type="radio"
-                  className="choose-pages__radio"
-                  id="32"
-                />
-                <label htmlFor="32" className="choose-pages__lable"><span>32</span> полосы</label>
-              </li>
-            </ul>
-            <button onClick={this.handleNewPagesField} className="choose-pages__button">
-              Создать раскладку
-            </button>
-          </fieldset>
+          <ChoosePages handleNewPagesField={this.handleNewPagesField} />
+          <CommonInfo pagesInfo={info} pagesQuantity={pQuantity} />
         </section>
       </React.Fragment>
     );

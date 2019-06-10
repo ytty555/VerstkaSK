@@ -178,3 +178,7 @@ export const getPagesState = pagesQuantity => {
   })();
   return Object.assign({}, resObj);
 };
+
+export const getPercent = (value, base, numberAfterZero) => {
+  return (value / base * 100).toFixed(numberAfterZero) + "%";
+}

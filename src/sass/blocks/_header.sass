@@ -5,6 +5,8 @@
 
 .header__info
     font-family: 'Roboto Regular', Arial, Helvetica, sans-serif
+    font-size: 30px
+    text-align: center
     // font-weight: 700
     margin: 0
     color: $text-white
@@ -21,14 +23,13 @@
     font-size: 16px
     padding: 0
 
-.choose-pages-fieldset
+.choose-pages-fieldset, .common-info-fieldset
     font-family: 'Roboto Regular', Arial, Helvetica, sans-serif
     font-size: 14px
     color: $text-yellow
     border-radius: 5px
     border: 2px solid $text-white
     margin: 10px
-    height: 120px
 
 .choose-pages__radio
     position: relative
@@ -43,6 +44,7 @@
     & span  
         color: $text-yellow
         // font-weight: 700
+
 
 .choose-pages__button
     position: relative
@@ -59,7 +61,21 @@
     font-weight: 700;
     font-size: 15px
     z-index: 0
+    cursor: pointer
 
 .pageBlock-Alert
     font-family: 'Roboto Regular', Arial, Helvetica, sans-serif
     color: $control-bg
+
+.control-text
+    color: $text-white
+
+.control-number
+    color: $text-yellow
+    font-size: 15px
+
+.control-number-attention
+    color: $attention
+    font-size: 15px
+    // font-weight: bold
+
