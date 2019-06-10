@@ -1,17 +1,19 @@
 import React from "react";
 
 function ProgressBar(props) {
-    const value = props.percentMakeUp;
-    return (
-        <React.Fragment>
-            <div className="progress_bg">
-                <div className="progress_bar">
+  const value = props.percentMakeUp;
 
-                </div>
-            </div>
+  return (
+    <React.Fragment>
+      <div className="progress_bg">
+        <div className="progress_border">
+          <div className="progress_bar" style={{ width: value }}>
             <p className="progress_percent">{value}</p>
-        </React.Fragment>
-    );
+          </div>
+        </div>
+      </div>
+    </React.Fragment >
+  );
 }
 
 export default ProgressBar;
