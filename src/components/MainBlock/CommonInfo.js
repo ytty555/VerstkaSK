@@ -1,4 +1,5 @@
 import React from "react";
+import ProgressBar from "./ProgressBar";
 
 function CommonInfo(props) {
   const pagesMakeUp = props.pagesInfo.pagesMakeUp;
@@ -43,6 +44,7 @@ function CommonInfo(props) {
             </td>
           </tr>
         </table>
+        <ProgressBar />
       </fieldset>
     </React.Fragment>
   )
