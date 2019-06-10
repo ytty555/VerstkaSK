@@ -12,7 +12,7 @@ function CommonInfo(props) {
   return (
     <React.Fragment>
       <fieldset className="common-info-fieldset">
-        <legend>Обобщая информация</legend>
+        <legend>Общая информация</legend>
         <table>
           <tr>
             <td className="control-text">
