@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/VerstkaSK/static/css/main.2ce99af6.chunk.css",
-    "main.js": "/VerstkaSK/static/js/main.ee5c0a79.chunk.js",
-    "main.js.map": "/VerstkaSK/static/js/main.ee5c0a79.chunk.js.map",
+    "main.css": "/VerstkaSK/static/css/main.b40638aa.chunk.css",
+    "main.js": "/VerstkaSK/static/js/main.154ca117.chunk.js",
+    "main.js.map": "/VerstkaSK/static/js/main.154ca117.chunk.js.map",
     "runtime~main.js": "/VerstkaSK/static/js/runtime~main.407dc1f8.js",
     "runtime~main.js.map": "/VerstkaSK/static/js/runtime~main.407dc1f8.js.map",
     "static/js/2.cba05053.chunk.js": "/VerstkaSK/static/js/2.cba05053.chunk.js",
     "static/js/2.cba05053.chunk.js.map": "/VerstkaSK/static/js/2.cba05053.chunk.js.map",
     "index.html": "/VerstkaSK/index.html",
-    "precache-manifest.9c450ebb81e931044110c4d84bbb26fb.js": "/VerstkaSK/precache-manifest.9c450ebb81e931044110c4d84bbb26fb.js",
+    "precache-manifest.69687b5b7ff4278f20e5a669d8768a26.js": "/VerstkaSK/precache-manifest.69687b5b7ff4278f20e5a669d8768a26.js",
     "service-worker.js": "/VerstkaSK/service-worker.js",
-    "static/css/main.2ce99af6.chunk.css.map": "/VerstkaSK/static/css/main.2ce99af6.chunk.css.map",
+    "static/css/main.b40638aa.chunk.css.map": "/VerstkaSK/static/css/main.b40638aa.chunk.css.map",
     "static/media/style.css": "/VerstkaSK/static/media/v-2.8731312c.svg",
     "static/media/pair.svg": "/VerstkaSK/static/media/pair.cfcc8909.svg"
   }
