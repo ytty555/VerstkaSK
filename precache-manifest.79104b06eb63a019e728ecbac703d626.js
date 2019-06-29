@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a831243b9198f612d27507a99abad797",
+    "revision": "d7f1b7e38aa14055a805c03f3615b1b9",
     "url": "/VerstkaSK/index.html"
   },
   {
-    "revision": "47a39476086f80d774f0",
-    "url": "/VerstkaSK/static/css/main.b40638aa.chunk.css"
+    "revision": "8ad7a437f5e98a0f3034",
+    "url": "/VerstkaSK/static/css/main.7faacbc6.chunk.css"
   },
   {
     "revision": "774d5e3722e17f42d013",
     "url": "/VerstkaSK/static/js/2.cba05053.chunk.js"
   },
   {
-    "revision": "47a39476086f80d774f0",
-    "url": "/VerstkaSK/static/js/main.154ca117.chunk.js"
+    "revision": "8ad7a437f5e98a0f3034",
+    "url": "/VerstkaSK/static/js/main.a8a1f396.chunk.js"
   },
   {
     "revision": "9042521bad4b9fafaa30",
@@ -72,8 +72,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/VerstkaSK/static/media/delegeted-1.5a9a7666.svg"
   },
   {
-    "revision": "c9d4c863a4d03b682f1f709c8aec9585",
-    "url": "/VerstkaSK/static/media/delegeted-2.c9d4c863.svg"
+    "revision": "5eb25f105ac65f049483fd93b2ade87c",
+    "url": "/VerstkaSK/static/media/delegeted-2.5eb25f10.svg"
   },
   {
     "revision": "2303b26ff260dc07e957bda67e604c6c",
@@ -112,8 +112,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/VerstkaSK/static/media/photo-left-1.9598efce.svg"
   },
   {
-    "revision": "3995aefff92e821c0cd2eb349578b61b",
-    "url": "/VerstkaSK/static/media/photo-left-2.3995aeff.svg"
+    "revision": "fd93a9d1427913afcf61b3ac8b4d443b",
+    "url": "/VerstkaSK/static/media/photo-left-2.fd93a9d1.svg"
   },
   {
     "revision": "db27aba82141d8cdf64b846692a3e012",
@@ -124,8 +124,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/VerstkaSK/static/media/photo-right-1.cb61e75c.svg"
   },
   {
-    "revision": "76d46aa1d09d205ccfb7cda5b260300b",
-    "url": "/VerstkaSK/static/media/photo-right-2.76d46aa1.svg"
+    "revision": "a929c3012b4769d883536ce86ac2b9a9",
+    "url": "/VerstkaSK/static/media/photo-right-2.a929c301.svg"
   },
   {
     "revision": "7ce9fd85dfe9c3341268e018dd363807",
@@ -136,7 +136,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/VerstkaSK/static/media/v-1.39ed2401.svg"
   },
   {
-    "revision": "8731312c1213b97dbd58e1a601ca5eb6",
-    "url": "/VerstkaSK/static/media/v-2.8731312c.svg"
+    "revision": "8da0b73b5d41a302774d2b9427467853",
+    "url": "/VerstkaSK/static/media/v-2.8da0b73b.svg"
   }
 ]);
