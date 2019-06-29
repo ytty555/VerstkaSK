@@ -285,15 +285,15 @@ body {
 
 @-webkit-keyframes butt {
   100% {
-    -webkit-transform: scale(2);
-            transform: scale(2);
+    -webkit-transform: scale(1.5);
+            transform: scale(1.5);
   }
 }
 
 @keyframes butt {
   100% {
-    -webkit-transform: scale(2);
-            transform: scale(2);
+    -webkit-transform: scale(1.5);
+            transform: scale(1.5);
   }
 }
 
@@ -312,8 +312,8 @@ body {
 
 @keyframes butt {
   100% {
-    -webkit-transform: scale(2);
-            transform: scale(2);
+    -webkit-transform: scale(1.5);
+            transform: scale(1.5);
   }
 }
 
@@ -332,8 +332,8 @@ body {
 
 @keyframes butt {
   100% {
-    -webkit-transform: scale(2);
-            transform: scale(2);
+    -webkit-transform: scale(1.5);
+            transform: scale(1.5);
   }
 }
 
@@ -352,8 +352,8 @@ body {
 
 @keyframes butt {
   100% {
-    -webkit-transform: scale(2);
-            transform: scale(2);
+    -webkit-transform: scale(1.5);
+            transform: scale(1.5);
   }
 }
 
