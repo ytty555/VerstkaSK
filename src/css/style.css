@@ -277,8 +277,24 @@ body {
 .page__el-make-up:hover {
   opacity: 0.7;
   background-image: url("../img/v-2.svg");
-  -webkit-transform: scale(1.2);
-          transform: scale(1.2);
+  -webkit-animation-name: butt;
+          animation-name: butt;
+  -webkit-animation-duration: 500ms;
+          animation-duration: 500ms;
+}
+
+@-webkit-keyframes butt {
+  100% {
+    -webkit-transform: scale(2);
+            transform: scale(2);
+  }
+}
+
+@keyframes butt {
+  100% {
+    -webkit-transform: scale(2);
+            transform: scale(2);
+  }
 }
 
 .page__el-make-up:focus {
@@ -288,8 +304,17 @@ body {
 .page__el-photo_left:hover {
   opacity: 0.7;
   background-image: url("../img/photo-left-2.svg");
-  -webkit-transform: scale(1.2);
-          transform: scale(1.2);
+  -webkit-animation-name: butt;
+          animation-name: butt;
+  -webkit-animation-duration: 500ms;
+          animation-duration: 500ms;
+}
+
+@keyframes butt {
+  100% {
+    -webkit-transform: scale(2);
+            transform: scale(2);
+  }
 }
 
 .page__el-photo_left:focus {
@@ -299,8 +324,17 @@ body {
 .page__el-photo_right:hover {
   opacity: 0.7;
   background-image: url("../img/photo-right-2.svg");
-  -webkit-transform: scale(1.2);
-          transform: scale(1.2);
+  -webkit-animation-name: butt;
+          animation-name: butt;
+  -webkit-animation-duration: 500ms;
+          animation-duration: 500ms;
+}
+
+@keyframes butt {
+  100% {
+    -webkit-transform: scale(2);
+            transform: scale(2);
+  }
 }
 
 .page__el-photo_right:focus {
@@ -310,8 +344,17 @@ body {
 .page__el-delegated:hover {
   opacity: 0.7;
   background-image: url("../img/delegeted-2.svg");
-  -webkit-transform: scale(1.2);
-          transform: scale(1.2);
+  -webkit-animation-name: butt;
+          animation-name: butt;
+  -webkit-animation-duration: 500ms;
+          animation-duration: 500ms;
+}
+
+@keyframes butt {
+  100% {
+    -webkit-transform: scale(2);
+            transform: scale(2);
+  }
 }
 
 .page__el-delegated:focus {
